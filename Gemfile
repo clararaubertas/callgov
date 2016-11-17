@@ -59,4 +59,4 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-google'
-
+gem 'rails_12factor'
