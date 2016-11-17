@@ -35,7 +35,7 @@
           <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
 	  <% if user_signed_in? %>
-	    <li>Signed in as... <strong><%= current_user.email %></strong></li>
+	    <li><span>Signed in as... <strong><%= current_user.email %></strong></span></li>
 	    <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
 
 	  <% else %>
