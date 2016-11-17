@@ -1,0 +1,1 @@
+json.partial! "calling_scripts/calling_script", calling_script: @calling_script

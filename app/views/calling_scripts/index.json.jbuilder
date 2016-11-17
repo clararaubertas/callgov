@@ -1,0 +1,1 @@
+json.array! @calling_scripts, partial: 'calling_scripts/calling_script', as: :calling_script

@@ -49,3 +49,10 @@ end
 gem 'bootstrap-generators', '~> 3.3.4'
 gem 'sunlight'
 gem 'rspec-rails'
+gem 'geocoder'
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-google'
+

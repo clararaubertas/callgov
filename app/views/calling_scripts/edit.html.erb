@@ -1,0 +1,13 @@
+<div class="page-header">
+  <%= link_to calling_scripts_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to @calling_script, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-info-sign"></span>
+    Show
+  <% end %>
+  <h1>Editing calling_script</h1>
+</div>
+
+<%= render 'form' %>

@@ -1,0 +1,20 @@
+<div class="page-header">
+  <%= link_to calling_scripts_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_calling_script_path(@calling_script), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show calling_script</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Content:</dt>
+  <dd><%= @calling_script.content % @substitutions %></dd>
+
+  <dt>Topic:</dt>
+  <dd><%= @calling_script.topic %></dd>
+
+</dl>

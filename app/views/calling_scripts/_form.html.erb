@@ -1,0 +1,35 @@
+<%= form_for(@calling_script, html: { class: "form-horizontal", role: "form" }) do |f| %>
+  <% if @calling_script.errors.any? %>
+    <div class="alert alert-danger alert-dismissable" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <h4><%= pluralize(@calling_script.errors.count, "error") %> prohibited this calling_script from being saved:</h4>
+
+      <ul>
+      <% @calling_script.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h3>Use the %{representative}, %{constituent}, and %{city} tags for your script to be automatically customized</h3>
+  <h4>e.g. "Hi, I'm %{constituent} from %{city} and hoping %{representative} will support this issue!"</h4>
+
+  <div class="form-group">
+    <%= f.label :content, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_area :content, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :topic, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :topic, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
