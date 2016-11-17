@@ -9,7 +9,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
       set_flash_message(:notice, :success, :kind => @kind) if is_navigational_format?
     else
-      set_flash_message(:notice, :failure, :kind => @kind) if is_navigational_format?
+      set_flash_message(:alert, :failure, :kind => @kind, :reason => failure_message) if is_navigational_format?
     end
   end
 
