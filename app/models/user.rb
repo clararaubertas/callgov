@@ -8,8 +8,15 @@ class User < ActiveRecord::Base
   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
     user.email = auth.info.email
     user.password = Devise.friendly_token[0,20]
-#    user.name = auth.info.name   # assuming the user model has a name
-#    user.image = auth.info.image # assuming the user model has an image
+    user.picture = auth.info.image
+    if auth.provider == 'facebook'
+      user.profile = auth.try(:extra).try(:raw_info).try(:link)
+    elsif auth.provider == 'twitter'
+      user.profile = auth.info.try(:urls).try(:Twitter)
+    elsif auth.provider == 'google_oauth2'
+      user.profile = auth.try(:extra).try(:raw_info).try(:profile)
+    end
+
   end
 end
   
