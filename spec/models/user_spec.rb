@@ -1,14 +1,22 @@
 require 'rails_helper'
 
 
-auth_hash = OmniAuth::AuthHash.new({
-  :provider => 'facebook',
+google_hash = OmniAuth::AuthHash.new({
+  :provider => 'google_oauth2',
   :uid => '1234',
   :info => {
-    :email => "user@example.com",
+    :email => "user2@example.com",
     :name => "Justin Bieber"
-  }
-})
+  }}
+                                    )
+facebook_hash = OmniAuth::AuthHash.new ({
+                                          :provider => "facebook", 
+                                          :uid => 1234,
+                                          :email => "user@example.com",
+                                          :password => 'password', 
+                                          :password_confirmation => 'password'
+                                        })
+     
 
 RSpec.describe User, type: :model do
 
@@ -18,22 +26,19 @@ RSpec.describe User, type: :model do
 
   it "creates via omniauth" do
     expect(User.count).to eq(0)
-    omniauth_user = User.from_omniauth(auth_hash)
+    omniauth_user = User.from_omniauth(google_hash)
     expect(User.count).to eq(1)
   end
 
   it "retrieves an existing user" do
-        user = User.new(
-            :provider => "facebook", 
-            :uid => 1234,
-            :email => "user@example.com",
-            :password => 'password', 
-            :password_confirmation => 'password'
-            )
-        user.save
-        omniauth_user = User.from_omniauth(auth_hash)
-
-        expect(user).to eq(omniauth_user)
+    user = User.new(        :provider => "facebook", 
+                                          :uid => 1234,
+                                          :email => "user@example.com",
+                                          :password => 'password', 
+                                  )
+    user.save
+    omniauth_user = User.from_omniauth(facebook_hash)
+    expect(user).to eq(omniauth_user)
   end
 
   
