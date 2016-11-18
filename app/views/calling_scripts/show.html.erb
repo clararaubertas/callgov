@@ -17,7 +17,7 @@
 
 <div class='jumbotron'>
   <% if @representative %>
-    <h1>Calling <%= @representative.first_name %><%= @representative.last_name %></h1>
+    <h1>Calling <%= @representative.first_name %> <%= @representative.last_name %></h1>
     <h2><a href="tel:<%= @representative.phone %>"><%= @representative.phone %></a></h2>
     <%= simple_format @calling_script.content % @substitutions %>
   <% elsif @representatives %>

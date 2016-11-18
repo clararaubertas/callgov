@@ -13,7 +13,7 @@ class CallingScriptsController < ApplicationController
   def show
     if params[:rep_id]
       @representative = Sunlight::Legislator.all_where(:bioguide_id => params[:rep_id]).first
-      @substitutions = {:representative => "#{@representative.first_name}, #{@representative.last_name}", :constituent => params[:name], :city => params[:address]}
+      @substitutions = {:representative => "#{@representative.first_name} #{@representative.last_name}", :constituent => params[:name], :city => params[:address]}
     elsif params[:address]
       @representatives = Sunlight::Legislator.all_for(:address => params[:address])
     end
