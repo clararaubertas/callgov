@@ -1,24 +1,23 @@
 <div class="page-header">
+  <p>
   <%= link_to calling_scripts_path, class: 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
     Back
 <% end %>
 <% if can?(:edit, @calling_script) %>
   <%= link_to edit_calling_script_path(@calling_script), class: 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-pencil"></span>
-    Edit
+  <span class="glyphicon glyphicon-pencil"></span>
+  Edit
 <% end %>
 <% end %>
-
+</p>
 </div>
+
+
 <div class='jumbotron'>
-
   <% if request.post? %>
-
     <%= simple_format @calling_script.content % @substitutions %>
   <% else %>
     <h1>Call about <%= @calling_script.topic %></h1>
-    
   <% end %>
-
-</dl>
+</div>
