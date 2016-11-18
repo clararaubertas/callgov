@@ -11,11 +11,10 @@ google_hash = OmniAuth::AuthHash.new({
                                     )
 facebook_hash = OmniAuth::AuthHash.new ({
                                           :provider => "facebook", 
-                                          :uid => 1234,
+                                          :uid => 1234, :info => {
                                           :email => "user@example.com",
-                                          :password => 'password', 
-                                          :password_confirmation => 'password'
-                                        })
+
+                                        }})
      
 
 RSpec.describe User, type: :model do
@@ -28,6 +27,11 @@ RSpec.describe User, type: :model do
     expect(User.count).to eq(0)
     omniauth_user = User.from_omniauth(google_hash)
     expect(User.count).to eq(1)
+  end
+
+  it "creates the other kind" do
+    omniauth_user = User.from_omniauth(facebook_hash)
+    expect(omniauth_user.picture).to be_present
   end
 
   it "retrieves an existing user" do

@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+
+  has_many :calls
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -22,7 +25,6 @@ class User < ActiveRecord::Base
           user.picture = "http://res.cloudinary.com/dm0czpc8q/image/gplus/c_thumb,e_improve,g_face,h_90,r_max,w_90/#{auth.uid}.png"
       else
         user.picture = "http://res.cloudinary.com/dm0czpc8q/image/fetch/c_thumb,e_improve,g_face,h_90,r_max,w_90/#{user.picture}"
-
       end
     end
 

@@ -50,6 +50,18 @@ RSpec.describe CallingScriptsController, type: :controller do
       get :show, id: calling_script.to_param
       expect(assigns(:calling_script)).to eq(calling_script)
     end
+    it "assigns a representative if appropriate" do
+      calling_script = FactoryGirl.create(:calling_script)
+      call = FactoryGirl.create(:call)
+      get :show, id: calling_script.to_param, :rep_id => call.rep_id
+      expect(assigns(:representative).first_name).to eq call.rep.first_name
+    end
+    it "gets several reps with an address" do
+      calling_script = FactoryGirl.create(:calling_script)
+      get :show, id: calling_script.to_param, :address => "5509 S Hyde Park #3 Chicago IL 60637"
+      expect(assigns(:representatives).size).to eq 3
+    end
+    
   end
   
   describe "GET #new" do
@@ -119,7 +131,7 @@ RSpec.describe CallingScriptsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        FactoryGirl.attributes_for(:calling_script)
+        FactoryGirl.attributes_for(:calling_script).merge(:topic => "foo")
       }
 
       before(:each) do
@@ -130,7 +142,7 @@ RSpec.describe CallingScriptsController, type: :controller do
         sign_in(calling_script.user)
         put :update,  id: calling_script.to_param, calling_script: new_attributes
         calling_script.reload
-        skip("Add assertions for updated state")
+        expect(calling_script.topic).to eq "foo"
       end
       
       it "assigns the requested calling_script as @calling_script" do
