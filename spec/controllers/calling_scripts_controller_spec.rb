@@ -61,7 +61,12 @@ RSpec.describe CallingScriptsController, type: :controller do
       get :show, id: calling_script.to_param, :address => "5509 S Hyde Park #3 Chicago IL 60637"
       expect(assigns(:representatives).size).to eq 3
     end
-    
+    it "creates a call" do
+      calling_script = FactoryGirl.create(:calling_script)
+      expect {
+        get :show, id: calling_script.to_param, :rep_id => FactoryGirl.create(:call).rep_id
+      }.to change(Call, :count)
+    end
   end
   
   describe "GET #new" do

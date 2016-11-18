@@ -11,7 +11,9 @@ class CallingScriptsController < ApplicationController
   # GET /calling_scripts/1.json
   def show
     if params[:i_called]
-      Call.create(:rep_id => params[:rep_id], :calling_script_id => @calling_script.id, :user_id => @current_user)
+      Call.find_or_create(:rep_id => params[:rep_id], :calling_script_id => @calling_script.id, :user_id => (@current_user.id || request.remote_ip))
+      flash[:notice] = "Call completed!"
+      redirect_to calling_scripts_path
     elsif params[:rep_id]
       @representative = Sunlight::Legislator.all_where(:bioguide_id => params[:rep_id]).first
       @substitutions = {:representative => "#{@representative.first_name} #{@representative.last_name}", :constituent => params[:name], :city => params[:address]}

@@ -12,9 +12,10 @@
       <tr>
         <th>Topic</th>
 	<th>Summary</th>
+	<th></th>
         <th></th>
-	<td></td>
-	<td></td>
+	<th></th>
+	<th></th>
       </tr>
     </thead>
 
@@ -27,6 +28,9 @@
 	      <span class="glyphicon glyphicon-phone"></span>
 	      Call Now!
       <% end %>
+</td>
+<td>
+  <span class='badge badge-info'><span class="glyphicon glyphicon-star"></span><%= pluralize(calling_script.calls.size, 'call') %> made!
 </td>
 <td>
   <a href="<%= calling_script.user.profile %>">
