@@ -68,6 +68,6 @@ class CallingScriptsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def calling_script_params
-      params.require(:calling_script).permit(:content, :topic)
+      params.require(:calling_script).permit(:content, :topic, :summary)
     end
 end

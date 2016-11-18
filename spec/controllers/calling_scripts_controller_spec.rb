@@ -24,7 +24,7 @@ RSpec.describe CallingScriptsController, type: :controller do
   # CallingScript. As you add validations to CallingScript, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-     {:content => "Hello", :topic => "Greetings"}
+    FactoryGirl.attributes_for(:calling_script)
   }
 
   let(:invalid_attributes) { { :content => nil }
@@ -37,8 +37,8 @@ RSpec.describe CallingScriptsController, type: :controller do
   
 
   describe "GET #index" do
-    it "assigns all calling_scripts as @calling_scripts" do
-      calling_script = FactoryGirl.create(:calling_script)
+    it "assigns all calling_scripts as @calling_scripts" do 
+     calling_script = FactoryGirl.create(:calling_script)
       get :index, params: {}
       expect(assigns(:calling_scripts)).to eq([calling_script])
     end
@@ -94,9 +94,8 @@ RSpec.describe CallingScriptsController, type: :controller do
 
     context 'with no user' do
       it "denies access" do
-        expect {
-          post :create, calling_script: valid_attributes
-        }.to raise_error(CanCan::AccessDenied)
+        post :create, calling_script: valid_attributes
+        expect(response).to redirect_to(new_user_registration_url) 
       end
     end
     
