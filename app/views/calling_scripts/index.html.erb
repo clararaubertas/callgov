@@ -13,6 +13,7 @@
         <th>Topic</th>
 	<th>Summary</th>
         <th></th>
+	<td></td>
       </tr>
     </thead>
 
@@ -20,7 +21,12 @@
       <%= content_tag_for(:tr, @calling_scripts) do |calling_script| %>
             <td><%= calling_script.topic %></td>
             <td><%= calling_script.summary %></td>
-            <td><%= link_to 'Call Now!', calling_script, :class => "glyphicon g lyphicon-phone" %></td>
+            <td>
+	      <%= link_to calling_script, class: 'btn btn-primary' do %>
+	      <span class="glyphicon glyphicon-phone"></span>
+	      Call Now!
+      <% end %>
+</td>
       <% end %>
     </tbody>
   </table>
