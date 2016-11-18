@@ -11,10 +11,11 @@ class CallingScriptsController < ApplicationController
   # GET /calling_scripts/1
   # GET /calling_scripts/1.json
   def show
+    @request = request
     if params[:i_called]
       Call.find_or_create_by(:rep_id => params[:rep_id], :calling_script_id => @calling_script.id, :user_id => (@current_user.try(:id) || request.remote_ip))
       flash[:notice] = "Call completed!"
-      if Call.find_all_by_calling_script_id_and_user_id(@calling_script.id, (@current_user.try(:id) || request.remote_ip)).size < 3
+      if Call.find(:all, conditions: { calling_script_id: @calling_script.id, user_id: (@current_user.try(:id) || request.remote_ip)}).size < 3 
       @representatives = Sunlight::Legislator.all_for(:address => params[:address])
       else
         redirect_to calling_scripts_path
