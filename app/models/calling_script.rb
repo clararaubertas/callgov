@@ -1,3 +1,4 @@
 class CallingScript < ActiveRecord::Base
-  validates_presence_of :content, :topic
+  validates_presence_of :content, :topic, :user
+  belongs_to :user
 end

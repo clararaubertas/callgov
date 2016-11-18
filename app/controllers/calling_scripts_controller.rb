@@ -1,5 +1,6 @@
 class CallingScriptsController < ApplicationController
-  before_action :set_calling_script, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
+
 
   # GET /calling_scripts
   # GET /calling_scripts.json
@@ -26,7 +27,7 @@ class CallingScriptsController < ApplicationController
   # POST /calling_scripts.json
   def create
     @calling_script = CallingScript.new(calling_script_params)
-
+    @calling_script.user = @current_user
     respond_to do |format|
       if @calling_script.save
         format.html { redirect_to @calling_script, notice: 'Calling script was successfully created.' }
@@ -64,9 +65,6 @@ class CallingScriptsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_calling_script
-      @calling_script = CallingScript.find(params[:id])
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def calling_script_params

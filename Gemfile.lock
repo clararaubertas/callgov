@@ -46,6 +46,7 @@ GEM
       railties (>= 3.1.0)
     builder (3.2.2)
     byebug (9.0.6)
+    cancancan (1.15.0)
     capybara (2.8.1)
       addressable
       mime-types (>= 1.16)
@@ -244,6 +245,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-generators (~> 3.3.4)
   byebug
+  cancancan
   capybara
   coffee-rails (~> 4.1.0)
   devise

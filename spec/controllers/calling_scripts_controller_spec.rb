@@ -33,12 +33,13 @@ RSpec.describe CallingScriptsController, type: :controller do
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # CallingScriptsController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+
+  
 
   describe "GET #index" do
     it "assigns all calling_scripts as @calling_scripts" do
       calling_script = FactoryGirl.create(:calling_script)
-      get :index, params: {}, session: valid_session
+      get :index, params: {}
       expect(assigns(:calling_scripts)).to eq([calling_script])
     end
   end
@@ -46,14 +47,15 @@ RSpec.describe CallingScriptsController, type: :controller do
   describe "GET #show" do
     it "assigns the requested calling_script as @calling_script" do
       calling_script = FactoryGirl.create(:calling_script)
-      get :show, id: calling_script.to_param, session: valid_session
+      get :show, id: calling_script.to_param
       expect(assigns(:calling_script)).to eq(calling_script)
     end
   end
   
   describe "GET #new" do
     it "assigns a new calling_script as @calling_script" do
-      get :new, params: {}, session: valid_session
+      sign_in(FactoryGirl.create(:user))
+      get :new, params: {}
       expect(assigns(:calling_script)).to be_a_new(CallingScript)
     end
   end
@@ -61,7 +63,8 @@ RSpec.describe CallingScriptsController, type: :controller do
   describe "GET #edit" do
     it "assigns the requested calling_script as @calling_script" do
       calling_script = FactoryGirl.create(:calling_script)
-      get :edit, id: calling_script.to_param, session: valid_session
+      sign_in(calling_script.user)
+      get :edit, id: calling_script.to_param
       expect(assigns(:calling_script)).to eq(calling_script)
     end
   end
@@ -70,30 +73,45 @@ RSpec.describe CallingScriptsController, type: :controller do
     context "with valid params" do
       it "creates a new CallingScript" do
         expect {
-          post :create, calling_script: valid_attributes, session: valid_session
+          post :create, calling_script: valid_attributes
         }.to change(CallingScript, :count).by(1)
+      end
+       before(:each) do
+        sign_in(FactoryGirl.create(:user))
       end
       
       it "assigns a newly created calling_script as @calling_script" do
-        post :create, calling_script: valid_attributes, session: valid_session
+        post :create, calling_script: valid_attributes
         expect(assigns(:calling_script)).to be_a(CallingScript)
         expect(assigns(:calling_script)).to be_persisted
       end
       
       it "redirects to the created calling_script" do
-        post :create, calling_script: valid_attributes, session: valid_session
+        post :create, calling_script: valid_attributes
         expect(response).to redirect_to(CallingScript.last)
+      end
+    end
+
+    context 'with no user' do
+      it "denies access" do
+        expect {
+          post :create, calling_script: valid_attributes
+        }.to raise_error(CanCan::AccessDenied)
       end
     end
     
     context "with invalid params" do
+             before(:each) do
+        sign_in(FactoryGirl.create(:user))
+      end
+
       it "assigns a newly created but unsaved calling_script as @calling_script" do
-        post :create, calling_script: invalid_attributes, session: valid_session
+        post :create, calling_script: invalid_attributes
         expect(assigns(:calling_script)).to be_a_new(CallingScript)
       end
       
       it "re-renders the 'new' template" do
-        post :create, calling_script: invalid_attributes, session: valid_session
+        post :create, calling_script: invalid_attributes
         expect(response).to render_template("new")
       end
     end
@@ -104,37 +122,45 @@ RSpec.describe CallingScriptsController, type: :controller do
       let(:new_attributes) {
         FactoryGirl.attributes_for(:calling_script)
       }
+
+      before(:each) do
+      end
       
       it "updates the requested calling_script" do
         calling_script = FactoryGirl.create(:calling_script)
-        put :update,  id: calling_script.to_param, calling_script: new_attributes, session: valid_session
+        sign_in(calling_script.user)
+        put :update,  id: calling_script.to_param, calling_script: new_attributes
         calling_script.reload
         skip("Add assertions for updated state")
       end
       
       it "assigns the requested calling_script as @calling_script" do
         calling_script = FactoryGirl.create(:calling_script)
-        put :update, id: calling_script.to_param, calling_script: valid_attributes, session: valid_session
+        sign_in(calling_script.user)
+        put :update, id: calling_script.to_param, calling_script: valid_attributes
         expect(assigns(:calling_script)).to eq(calling_script)
       end
 
       it "redirects to the calling_script" do
-        calling_script = CallingScript.create! valid_attributes
-        put :update,  id: calling_script.to_param, calling_script: valid_attributes, session: valid_session
+        calling_script = FactoryGirl.create(:calling_script)
+        sign_in(calling_script.user)
+        put :update,  id: calling_script.to_param, calling_script: valid_attributes
         expect(response).to redirect_to(calling_script)
       end
     end
 
     context "with invalid params" do
       it "assigns the calling_script as @calling_script" do
-        calling_script = CallingScript.create! valid_attributes
-        put :update,  id: calling_script.to_param, calling_script: invalid_attributes, session: valid_session
+        calling_script = FactoryGirl.create(:calling_script)
+        sign_in(calling_script.user)
+        put :update,  id: calling_script.to_param, calling_script: invalid_attributes
         expect(assigns(:calling_script)).to eq(calling_script)
       end
 
       it "re-renders the 'edit' template" do
-        calling_script = CallingScript.create! valid_attributes
-        put :update,  id: calling_script.to_param, calling_script: invalid_attributes, session: valid_session
+        calling_script = FactoryGirl.create(:calling_script)
+        sign_in(calling_script.user)
+        put :update,  id: calling_script.to_param, calling_script: invalid_attributes
         expect(response).to render_template("edit")
       end
     end
@@ -142,15 +168,16 @@ RSpec.describe CallingScriptsController, type: :controller do
 
   describe "DELETE #destroy" do
     it "destroys the requested calling_script" do
-      calling_script = CallingScript.create! valid_attributes
+      calling_script = FactoryGirl.create(:calling_script)
+      sign_in(calling_script.user)
       expect {
-        delete :destroy,  id: calling_script.to_param, session: valid_session
-      }.to change(CallingScript, :count).by(-1)
+        delete :destroy,  id: calling_script.to_param      }.to change(CallingScript, :count).by(-1)
     end
 
     it "redirects to the calling_scripts list" do
-      calling_script = CallingScript.create! valid_attributes
-      delete :destroy, id: calling_script.to_param, session: valid_session
+      calling_script = FactoryGirl.create(:calling_script)
+      sign_in(calling_script.user)
+      delete :destroy, id: calling_script.to_param
       expect(response).to redirect_to(calling_scripts_url)
     end
   end
