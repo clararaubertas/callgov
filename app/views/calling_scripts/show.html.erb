@@ -20,7 +20,7 @@
     <h1>Calling <%= @representative %></h1>
     <%= simple_format @calling_script.content % @substitutions %>
   <% elsif @representatives %>
-    <form method="post">
+    <form>
       <fieldset class="form-group">
 	<legend>Your Representatives</legend>
 	<div class="form-check">
@@ -39,7 +39,7 @@
     </form>
   <% else %>
     <h1>Call about <%= @calling_script.topic %></h1>
-    <form method="post">
+    <form>
       <div class="form-group">
 	<label for="name">Your Name</label>
 	<input type="text" class="form-control" placeholder="Enter your name" />
