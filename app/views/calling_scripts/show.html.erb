@@ -27,11 +27,15 @@
 	  <% @representatives.each do |rep| %>
 	    <label class="form-check-label">
               <input type="radio" class="form-check-input" value="<%= rep.fec_id %>" name="rep_id">
-	      <%= <strong>#{rep.chamber}:</strong> #{rep.first_name} #{rep.last_name} %>
+	      <strong><%= rep.chamber.titleize %></strong>
+	      <%= rep.first_name %>
+	      <%= rep.last_name %>
 	    </label>
 	  <% end %>
 	  <button type="submit" class="btn btn-primary"><span class='glyphicon glyphicon-phone'></span>Call them!</button>
 	</div>
+	<input type="hidden" name="address" value="<%= params[:address] %>" />
+	<input type="hidden" name="name" value="<%= params[:name] %>" />
     </form>
   <% else %>
     <h1>Call about <%= @calling_script.topic %></h1>
