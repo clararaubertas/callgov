@@ -24,7 +24,7 @@
 	<div class="form-check btn-group" data-toggle="buttons">
 	  <% @representatives.each do |rep| %>
 	    <label class="form-check-label btn btn-primary
-		   <% if Call.find_by_calling_script_id_and_user_id_and_rep_id(@calling_script.id, (@current_user.try(:id) || @request.remote_ip) %>
+		   <% if Call.find_by_calling_script_id_and_user_id_and_rep_id(@calling_script.id, (@current_user.try(:id) || @request.remote_ip)) %>
 disabled <% end %>    ">
 		<input type="radio" class="form-check-input" value="<%= 
 rep.bioguide_id %>" name="rep_id">
