@@ -57,7 +57,7 @@ module Sunlight
   end 
   class Legislator
 
-    attr_accessor :first_name, :last_name, :phone, :website, :office
+    attr_accessor :first_name, :last_name, :phone, :website, :office, :chamber
     def self.all_where(params)
       url = construct_url("legislators", params)
       legislators_from_url(url)
