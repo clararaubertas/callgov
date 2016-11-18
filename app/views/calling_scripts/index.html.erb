@@ -21,7 +21,7 @@
 
     <tbody>
       <%= content_tag_for(:tr, @calling_scripts) do |calling_script| %>
-            <td><%= calling_script.topic %></td>
+            <td><strong><%= calling_script.topic %></strong></td>
             <td><%= calling_script.summary %></td>
             <td>
 	      <% if Call.find_by_calling_script_id_and_user_id(calling_script.id, (current_user.try(:id) || @request.remote_ip)) %>
@@ -35,11 +35,11 @@
       <% end %>
 </td>
 <td>
-  <span class="label">
-    Calls
+  <span class="btn btn-primary">
     <span class='badge'>
       <%= calling_script.calls.size %>
     </span>
+    calls
   </span>
 </td>
 <td>

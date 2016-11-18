@@ -14,7 +14,11 @@ class CallingScriptsController < ApplicationController
     if params[:i_called]
       Call.find_or_create_by(:rep_id => params[:rep_id], :calling_script_id => @calling_script.id, :user_id => (@current_user.try(:id) || request.remote_ip))
       flash[:notice] = "Call completed!"
-      redirect_to calling_scripts_path
+      if Call.find_all_by_calling_script_id_and_user_id(@calling_script.id, (@current_user.try(:id) || request.remote_ip)).size < 3
+      @representatives = Sunlight::Legislator.all_for(:address => params[:address])
+      else
+        redirect_to calling_scripts_path
+      end
     elsif params[:rep_id]
       @representative = Sunlight::Legislator.all_where(:bioguide_id => params[:rep_id]).first
       @substitutions = {:representative => "#{@representative.first_name} #{@representative.last_name}", :constituent => params[:name], :city => params[:address]}
