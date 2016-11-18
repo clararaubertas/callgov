@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   
-  resources :calling_scripts do
-    member do 
-      post 'show'
-      get 'show'
-    end
-  end
+  resources :calling_scripts
+  match "/calling_scripts/:id" => "calling_scripts#show", :via => :post
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
