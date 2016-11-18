@@ -11,13 +11,39 @@
 <% end %>
 <% end %>
 </p>
+<p style='clear: both;'></p>
 </div>
 
 
 <div class='jumbotron'>
-  <% if request.post? %>
+  <% if @representative %>
+    <h1>Calling <%= @representative %></h1>
     <%= simple_format @calling_script.content % @substitutions %>
+  <% elsif @representatives %>
+    <form method="post">
+      <fieldset class="form-group">
+	<legend>Your Representatives</legend>
+	<div class="form-check">
+	  <% @representatives.each do |rep| %>
+	    <label class="form-check-label">
+              <input type="radio" class="form-check-input" value="<%= rep.fec_id %>" name="rep_id">
+	      <%= <strong>#{rep.chamber}:</strong> #{rep.first_name} #{rep.last_name} %>
+	    </label>
+	  <% end %>
+	  <button type="submit" class="btn btn-primary"><span class='glyphicon glyphicon-phone'></span>Call them!</button>
+	</div>
+    </form>
   <% else %>
     <h1>Call about <%= @calling_script.topic %></h1>
+    <form method="post">
+      <div class="form-group">
+	<label for="name">Your Name</label>
+	<input type="text" class="form-control" placeholder="Enter your name" />
+	<input type="address" class="form-control" placeholder="Enter your address" />
+	<small class="form-text text-muted">We don't store this information; it's just to find your representatives and populate .</small>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Find my reps!</button>
+    </form>
   <% end %>
 </div>

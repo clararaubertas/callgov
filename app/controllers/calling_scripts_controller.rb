@@ -11,7 +11,15 @@ class CallingScriptsController < ApplicationController
   # GET /calling_scripts/1
   # GET /calling_scripts/1.json
   def show
-    @substitutions = {:representative => "Senator Jane Doe", :constituent => "John Smith", :city => "Chicago" }
+    if request.post?
+      if params[:address]
+        @representatives = Sunlight::Legislator.all_for(:address => params[:address])
+      end
+      if params[:rep_id]
+        @representative = Sunlight::Legislator.all_where(:fec_id => params[:rep_id]).first
+        @substitutions = {:representative => "#{@representative.first_name}, #{@representative.last_name}", :constituent => params[:name], :city => params[:address]}
+      end
+    end
   end
 
   # GET /calling_scripts/new
