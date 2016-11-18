@@ -5,6 +5,7 @@ class CallingScriptsController < ApplicationController
   # GET /calling_scripts.json
   def index
     @calling_scripts = CallingScript.all
+    @request = request
   end
 
   # GET /calling_scripts/1

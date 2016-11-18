@@ -24,9 +24,14 @@
             <td><%= calling_script.topic %></td>
             <td><%= calling_script.summary %></td>
             <td>
-	      <%= link_to calling_script, class: 'btn btn-primary' do %>
-	      <span class="glyphicon glyphicon-phone"></span>
-	      Call Now!
+	      <% if Call.find_by_calling_script_id_and_current_user_id(calling_script.id, (current_user.id || @request.ip)) %>
+		<span class='btn'><span class="glyphicon glyphicon-check"></span>
+		  Called</span>
+	      <% else %>
+		<%= link_to calling_script, class: 'btn btn-primary' do %>
+		<span class="glyphicon glyphicon-phone"></span>
+		Call Now!
+	      <% end %>
       <% end %>
 </td>
 <td>
