@@ -27,6 +27,14 @@
 	      Call Now!
       <% end %>
 </td>
+<td>
+  <% if can?(:edit, @calling_script) %>
+    <%= link_to edit_calling_script_path(@calling_script), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <% end %>
+</td>
       <% end %>
     </tbody>
   </table>

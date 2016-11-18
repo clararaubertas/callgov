@@ -2,19 +2,23 @@
   <%= link_to calling_scripts_path, class: 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
     Back
-  <% end %>
+<% end %>
+<% if can?(:edit, @calling_script) %>
   <%= link_to edit_calling_script_path(@calling_script), class: 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-pencil"></span>
     Edit
-  <% end %>
-  <h1>Show calling_script</h1>
+<% end %>
+<% end %>
+
 </div>
+<div class='jumbotron'>
 
-<dl class="dl-horizontal">
-  <dt>Content:</dt>
-  <dd><%= @calling_script.content % @substitutions %></dd>
+  <% if request.post? %>
 
-  <dt>Topic:</dt>
-  <dd><%= @calling_script.topic %></dd>
+    <%= simple_format @calling_script.content % @substitutions %>
+  <% else %>
+    <h1>Call about <%= @calling_script.topic %></h1>
+    
+  <% end %>
 
 </dl>
