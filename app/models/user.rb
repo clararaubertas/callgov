@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
     user.password = Devise.friendly_token[0,20]
     user.picture = auth.info.image
     if auth.provider == 'facebook'
-      user.profile = auth.try(:extra).try(:raw_info).try(:link)
+      user.profile = "http://facebook.com/#{auth.uid}"
       user.picture = "http://res.cloudinary.com/dm0czpc8q/image/facebook/c_thumb,e_improve,g_face,h_90,r_max,w_90/#{auth.uid}.png"
     elsif auth.provider == 'twitter'
       user.profile = auth.info.try(:urls).try(:Twitter)
