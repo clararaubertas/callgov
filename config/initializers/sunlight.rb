@@ -48,7 +48,9 @@ module Sunlight
 
         # get the lat/long from Google
         coordinates = Geocoder.coordinates(params[:address])
-        get_from_lat_long(coordinates[0], coordinates[1])
+        if coordinates
+          get_from_lat_long(coordinates[0], coordinates[1])
+        end
       else
         nil # appropriate params not found
       end
@@ -58,15 +60,26 @@ module Sunlight
   class Legislator
 
     attr_accessor :first_name, :last_name, :phone, :website, :office, :chamber
+
+    def display_name
+      title = (chamber == 'senate') ? "Senator" : "Representative"
+      my_district = (chamber == 'house') ? district : ""
+      "#{title} #{first_name} #{last_name} (#{party}-#{state}#{(chamber == 'house') ? " " : ""}#{district})"
+    end
+    
     def self.all_where(params)
       url = construct_url("legislators", params)
       legislators_from_url(url)
     end
 
     def self.all_in_district(district)
-      representative = Legislator.all_where(:state => district.state, :district => district.number).first
-      senators = Legislator.all_where(:state => district.state, :chamber => 'senate')
-      senators + [representative]
+      if district
+        representative = Legislator.all_where(:state => district.state, :district => district.number).first
+        senators = Legislator.all_where(:state => district.state, :chamber => 'senate')
+        senators + [representative]
+      else
+        []
+      end
     end
 
 

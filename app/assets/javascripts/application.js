@@ -12,6 +12,16 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
+//= require gmaps-auto-complete
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+
+
+jQuery(function() {
+
+    var input = document.getElementById('gmaps-input-address');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+
+});

@@ -1,42 +1,35 @@
-<div class="page-header">
-  <p>
-  <%= link_to calling_scripts_path, class: 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    Back
-<% end %>
-<% if can?(:edit, @calling_script) %>
-  <%= link_to edit_calling_script_path(@calling_script), class: 'btn btn-primary' do %>
-  <span class="glyphicon glyphicon-pencil"></span>
-  Edit
-<% end %>
-<% end %>
-</p>
-<p style='clear: both;'></p>
-</div>
-
 
 <div class='jumbotron'>
   <% if @representative %>
-    <h2>Calling <%= @representative.first_name %> <%= @representative.last_name %></h2>
-    <h3><a href="tel:<%= @representative.phone %>"><%= @representative.phone %></a></h3>
+    <h2>Ready to Call</h2>
+    <div class="well">
+      <img src="http://res.cloudinary.com/dm0czpc8q/image/facebook/c_thumb,e_improve,g_face,h_90,r_max,w_90/<%= @representative.facebook_id %>.png" />
+      <%= @representative.display_name %>
+
+      <a class="phone-number btn btn-primary" href="tel:<%= @representative.phone %>"><%= @representative.phone %></a></span>
+
+</div>
+
     <%= simple_format @calling_script.content % @substitutions %>
   <% elsif @representatives %>
     <form method="get">
       <fieldset class="form-group">
-	<legend>Your Representatives</legend>
-	<div class="form-check">
+	<legend>Your Representatives (choose one to call first)</legend>
+	<div class="form-check btn-group" data-toggle="buttons">
 	  <% @representatives.each do |rep| %>
-	    <p>
-	    <label class="form-check-label">
-              <input type="radio" class="form-check-input" value="<%= rep.bioguide_id %>" name="rep_id">
-	      <strong><%= rep.chamber.titleize %>:</strong>
-	      <%= rep.first_name %>
-	      <%= rep.last_name %>
+	      <label class="form-check-label btn btn-primary">
+		<input type="radio" class="form-check-input" value="<%= 
+rep.bioguide_id %>" name="rep_id">
+		<img src="http://res.cloudinary.com/dm0czpc8q/image/facebook/c_thumb,e_improve,g_face,h_90,r_max,w_90/<%= rep.facebook_id %>.png" />
+	      <%= rep.display_name %>
 	    </label>
-	    </p>
 	  <% end %>
-	  <button type="submit" class="btn btn-primary"><span class='glyphicon glyphicon-phone'></span>Call them!</button>
 	</div>
+      </fieldset>
+	<p>
+	  <button type="submit" class="btn btn-primary btn-lg"><span class='glyphicon glyphicon-phone' aria-hidden="true"></span>Let's Call! </button>
+	</p>
+
 	<input type="hidden" name="address" value="<%= params[:address] %>" />
 	<input type="hidden" name="name" value="<%= params[:name] %>" />
     </form>
@@ -46,7 +39,8 @@
       <div class="form-group">
 	<label for="name">Your Name</label>
 	<input type="text" class="form-control" placeholder="Enter your name" name="name" />
-	<input type="address" class="form-control" placeholder="Enter your address" name="address" />
+	<div id="gmaps-error"></div>
+	<input type="address" class="form-control" placeholder="Enter your street address" name="address" id="gmaps-input-address" />
 	<small class="form-text text-muted">We don't store this information; it's just to find your representatives and populate the script.</small>
       </div>
 
