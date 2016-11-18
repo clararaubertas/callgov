@@ -24,7 +24,7 @@
             <td><%= calling_script.topic %></td>
             <td><%= calling_script.summary %></td>
             <td>
-	      <% if Call.find_by_calling_script_id_and_current_user_id(calling_script.id, (current_user.id || @request.ip)) %>
+	      <% if Call.find_by_calling_script_id_and_user_id(calling_script.id, (current_user.id || @request.ip)) %>
 		<span class='btn'><span class="glyphicon glyphicon-check"></span>
 		  Called</span>
 	      <% else %>
