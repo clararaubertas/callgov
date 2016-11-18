@@ -26,12 +26,14 @@
 	<legend>Your Representatives</legend>
 	<div class="form-check">
 	  <% @representatives.each do |rep| %>
+	    <p>
 	    <label class="form-check-label">
-              <input type="radio" class="form-check-input" value="<%= rep.fec_id %>" name="rep_id">
-	      <strong><%= rep.chamber.titleize %></strong>
+              <input type="radio" class="form-check-input" value="<%= rep.bioguide_id %>" name="rep_id">
+	      <strong><%= rep.chamber.titleize %>:</strong>
 	      <%= rep.first_name %>
 	      <%= rep.last_name %>
 	    </label>
+	    </p>
 	  <% end %>
 	  <button type="submit" class="btn btn-primary"><span class='glyphicon glyphicon-phone'></span>Call them!</button>
 	</div>
