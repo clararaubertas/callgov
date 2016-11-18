@@ -1,13 +1,20 @@
-<h2>Please sign in to create scripts.</h2>
-
-<%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <% provider_name = provider.to_s.gsub("_oauth2", "") %>
-    <p>
-      <%= link_to omniauth_authorize_path(resource_name, provider), :class => 'btn btn-primary' do %>
-      <span class='glyphicon glyphicon-user'></span>
-      Sign in with <%= provider_name.titleize %>
+	    <li><%= link_to user_facebook_omniauth_authorize_path, :class => 'btn-facebook btn' do %>
+	      <i class='fa fa-facebook'>
+	      </i>
+	      Sign in with Facebook
+	  <% end %>
+</li>
+<li><%= link_to user_google_oauth2_omniauth_authorize_path, :class => 'btn-google btn' do %>
+  <i class='fa fa-google'>
+  </i>
+  Sign in with Google
   <% end %>
-  </p>
-  <% end -%>
-<% end -%>
+</li>
+<li><%= link_to  user_twitter_omniauth_authorize_path, :class => 'btn-twitter btn' do %>
+  <i class='fa fa-twitter'>
+  </i>
+  Sign in with Twitter
+  <% end %>
+
+
+</li>

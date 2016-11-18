@@ -41,9 +41,7 @@
 	    <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
 
 	  <% else %>
-	    <li><%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %></li>
-	    <li><%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %></li>
-	    <li><%= link_to "Sign in with Twitter", user_twitter_omniauth_authorize_path %></li>
+	    <%= render :partial => 'devise/shared/links' %>
 	  <% end %>
         </ul>
 
@@ -60,6 +58,21 @@
     <% end %>
 
     <%= yield %>
-  </div>
+</div>
+<footer class='footer'>
+  <div class='container'>
+    <p class='muted-text'>
+
+      Congress Caller created by <a href="http://twitter.com/clararaubertas" class='btn btn-twitter'><i class='fa fa-twitter'></i>@clararaubertas</a> and <a href="http://parallactic.com">Parallactic Consulting</a> &bull;
+      <a href="https://github.com/Parallactic/calling-congress/issues/new"><i class='fa fa-github'></i> make a suggestion</a>
+      <span class='pull-right text-right'>
+      <a href="https://github.com/Parallactic/calling-congress/fork"><img src='https://img.shields.io/github/forks/Parallactic/calling-congress.svg?style=social&label=Fork' /></a>
+      <a href="https://github.com/Parallactic/calling-congress/star"><img src='https://img.shields.io/github/stars/Parallactic/calling-congress.svg?style=social&label=Star' /></a>
+      <a href="https://github.com/Parallactic/calling-congress/watch"><img src='https://img.shields.io/github/watchers/Parallactic/calling-congress.svg?style=social&label=Watch' /></a>
+      </span>
+</p>      
+  
+</div>
+</div>
 </body>
 </html>
