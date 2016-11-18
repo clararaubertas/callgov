@@ -11,7 +11,7 @@ class CallingScriptsController < ApplicationController
   # GET /calling_scripts/1.json
   def show
     if params[:i_called]
-      Call.find_or_create(:rep_id => params[:rep_id], :calling_script_id => @calling_script.id, :user_id => (@current_user.id || request.remote_ip))
+      Call.find_or_create_by(:rep_id => params[:rep_id], :calling_script_id => @calling_script.id, :user_id => (@current_user.id || request.remote_ip))
       flash[:notice] = "Call completed!"
       redirect_to calling_scripts_path
     elsif params[:rep_id]
