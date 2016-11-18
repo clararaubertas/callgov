@@ -16,8 +16,14 @@ class User < ActiveRecord::Base
       user.profile = auth.info.try(:urls).try(:Twitter)
       user.picture = "http://res.cloudinary.com/dm0czpc8q/image/twitter/c_thumb,e_improve,g_face,h_90,r_max,w_90/#{auth.uid}.png"
     elsif auth.provider == 'google_oauth2'
-      user.picture = "http://res.cloudinary.com/dm0czpc8q/image/gplus/c_thumb,e_improve,g_face,h_90,r_max,w_90/#{auth.uid}.png"
-      user.profile = "http://plus.google.com/#{auth.uid}"
+      url = URI.parse("http://plus.google.com/#{auth.uid}") 
+      if Net::HTTP.new(url.host, url.port).request_head(url.path).code == "200"
+          user.profile = url
+          user.picture = "http://res.cloudinary.com/dm0czpc8q/image/gplus/c_thumb,e_improve,g_face,h_90,r_max,w_90/#{auth.uid}.png"
+      else
+        user.picture = "http://res.cloudinary.com/dm0czpc8q/image/fetch/c_thumb,e_improve,g_face,h_90,r_max,w_90/#{user.picture}"
+
+      end
     end
 
   end
