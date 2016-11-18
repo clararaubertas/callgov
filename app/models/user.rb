@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
     user.picture = auth.info.image
     if auth.provider == 'facebook'
       user.profile = auth.try(:extra).try(:raw_info).try(:link)
+      user.picture = "http://res.cloudinary.com/dm0czpc8q/image/facebook/c_thumb,e_improve,g_face,h_90,r_max,w_90/#{auth.uid}.png"
     elsif auth.provider == 'twitter'
       user.profile = auth.info.try(:urls).try(:Twitter)
     elsif auth.provider == 'google_oauth2'

@@ -28,9 +28,11 @@
 	      Call Now!
       <% end %>
 </td>
-<td><a href="<%= calling_script.user.profile %>">
-	     <img src="<%= calling_script.user.picture %>" />
-</a>
+<td>
+  <a href="<%= calling_script.user.profile %>">
+    <i class='fa fa-<%= calling_script.user.provider %>'></i>
+    <img src="<%= calling_script.user.picture %>" />
+  </a>
 </td>
 <td>
   <% if can?(:edit, calling_script) %>
@@ -38,9 +40,9 @@
     <span class="glyphicon glyphicon-pencil"></span>
     Edit
   <% end %>
-  <% end %>
+<% end %>
 </td>
-      <% end %>
-    </tbody>
-  </table>
+<% end %>
+</tbody>
+</table>
 </div>
