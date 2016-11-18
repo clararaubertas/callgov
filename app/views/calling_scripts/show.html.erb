@@ -17,7 +17,8 @@
 
 <div class='jumbotron'>
   <% if @representative %>
-    <h1>Calling <%= @representative %></h1>
+    <h1>Calling <%= @representative.first_name %><%= @representative.last_name %></h1>
+    <h2><a href="tel:<%= @representative.phone %>"><%= @representative.phone %></a></h2>
     <%= simple_format @calling_script.content % @substitutions %>
   <% elsif @representatives %>
     <form method="get">
@@ -42,9 +43,9 @@
     <form method="get">
       <div class="form-group">
 	<label for="name">Your Name</label>
-	<input type="text" class="form-control" placeholder="Enter your name" />
-	<input type="address" class="form-control" placeholder="Enter your address" />
-	<small class="form-text text-muted">We don't store this information; it's just to find your representatives and populate .</small>
+	<input type="text" class="form-control" placeholder="Enter your name" name="name" />
+	<input type="address" class="form-control" placeholder="Enter your address" name="address" />
+	<small class="form-text text-muted">We don't store this information; it's just to find your representatives and populate the script.</small>
       </div>
 
       <button type="submit" class="btn btn-primary">Find my reps!</button>
