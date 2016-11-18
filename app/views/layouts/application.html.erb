@@ -37,7 +37,7 @@
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav pull-right">
 	  <% if user_signed_in? %>
-	    <li><span>Signed in as... <strong><%= current_user.email %></strong></span></li>
+	    <li><span>Signed in as <%= current_user.email %></span></li>
 	    <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
 
 	  <% else %>

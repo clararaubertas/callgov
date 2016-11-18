@@ -28,7 +28,10 @@
 	      Call Now!
       <% end %>
 </td>
-<td>by <%= calling_script.user.email %></td>
+<td><a href="<%= calling_script.user.profile %>">
+	     <img src="<%= calling_script.user.image %>" />
+</a>
+</td>
 <td>
   <% if can?(:edit, calling_script) %>
     <%= link_to edit_calling_script_path(calling_script), class: 'btn btn-primary' do %>
