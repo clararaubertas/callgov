@@ -15,11 +15,23 @@ $gray:                   lighten($gray-base, 33.5%) !default; // #555
 $gray-light:             lighten($gray-base, 46.7%) !default; // #777
 $gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
 
-$brand-primary:         #337ab7;
+
 $brand-success:         #5cb85c !default;
 $brand-info:            #5bc0de !default;
 $brand-warning:         #f0ad4e !default;
 $brand-danger:          #d9534f !default;
+
+
+$text:         #000000;
+$navbar-inverse-bg:        #AC0000;
+$brand-primary:   #002566;
+$nav-text:     #FFFFFF;
+$jumbotron-bg:      #C8D3E6;
+$well-bg: #fff;
+$container-bg: #fff;
+$body-bg: #fff;
+
+
 
 
 //== Scaffolding
@@ -357,7 +369,7 @@ $container-lg:                 $container-large-desktop !default;
 //##
 
 // Basics of a navbar
-$navbar-height:                    50px !default;
+$navbar-height:                    70px !default;
 $navbar-margin-bottom:             $line-height-computed !default;
 $navbar-border-radius:             $border-radius-base !default;
 $navbar-padding-horizontal:        floor(($grid-gutter-width / 2)) !default;

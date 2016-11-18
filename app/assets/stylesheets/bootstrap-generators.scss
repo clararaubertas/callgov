@@ -22,7 +22,10 @@ input[type="radio"], input[type="checkbox"] {
   margin-top: 7px;
 }
 
+
 .navbar-nav li span { color: $gray-lighter; line-height: 20px; padding-top: 15px; padding-bottom: 15px; display: block; position: relative; }
+
+.navbar-nav li a.btn { padding: 5px; margin-top: 20px; border: 1px solid $gray-lighter; margin-left: 20px; }
 
 .navbar-inverse .navbar-nav > li > a {
     color: #fff;
