@@ -1,0 +1,11 @@
+  <a href="<%= calling_script.user.profile %>">
+    <i class='fa fa-<%= calling_script.user.provider.gsub("_oauth2", "") %>'></i>
+    <img src="<%= calling_script.user.picture %>" width="40" height="40" />
+  </a>
+
+  <% if can?(:edit, calling_script) %>
+    <%= link_to edit_calling_script_path(calling_script), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+
