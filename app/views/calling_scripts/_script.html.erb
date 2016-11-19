@@ -1,5 +1,5 @@
 <div class='row'>
-<span class='col-md-1'>
+<span class='col-md-2'>
   <span class="btn btn-primary">
     <span class='badge'>
       <%= calling_script.calls.size %>
@@ -7,11 +7,11 @@
     calls
   </span>
 </span>
-<span class='col-md-3'>
+<span class='col-md-7'>
   <h3><%= calling_script.topic %></h3>
   <%= calling_script.summary %>
 </span>
-<span class='col-md-2'>
+<span class='col-md-3'>
   <% if calling_script.called_yet?(current_user, @request.remote_ip) %>
     <span class='btn'><span class="glyphicon glyphicon-check"></span>
       Called</span>
