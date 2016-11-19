@@ -17,16 +17,19 @@
  *= require_self
  */
 
+#rep-chooser .form-check-label { width: 100%; text-align: left; margin-bottom: 1em;  }
 
 .logged-in-user { color: #fff; line-height: 20px; padding-top: 20px; padding-bottom: 25px; display: block; position: relative; font-weight: bold; }
 
 td a:hover { text-decoration: none; }
 
-.navbar-nav li a.btn { padding: 5px; margin-top: 20px; border: 1px solid #fff; margin-left: 10px; font-size: .8em; }
-
 .navbar-inverse .navbar-nav > li > a {
     color: #fff;
+
 }
+
+.navbar-inverse .btn { padding: 5px; margin-top: 20px; margin-right: 1em; }
+.navbar-inverse .btn-twitter, .navbar-inverse .btn-facebook, .navbar-inverse .btn-google { font-size: .8em; margin-right: 0; }
 
 .navbar-inverse .navbar-brand {
     color: #fff;
@@ -41,6 +44,38 @@ a:link, a:hover, a:visited { font-weight: bold; }
 
 body { font-family: 'Open Sans', sans-serif; }
 .navbar-brand, h1, h2, h3, h4, h5 { font-family: Bitter, serif; }
-h1 { font-size: 1.6em; }
-h2 { font-size: 1.3em; }
+h1.title { font-size: 1.6em; }
+
 .row h3 { margin-top: 0; }
+
+.row-striped:nth-of-type(odd){
+  background-color: #efefef;
+}
+
+.row-striped:nth-of-type(even){
+  background-color: #cfcfcf;
+}
+
+.row-striped div { padding-top: 1em; padding-bottom: 1.5em; }
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: .6em;
+    height: 60px;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0 0 60px; /* bottom = footer height */
+}
+
+@media (max-device-width: 700px) {
+    body { margin: 0 0 120px; }
+    .footer { height: 120px; }
+}

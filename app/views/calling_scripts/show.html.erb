@@ -1,58 +1,16 @@
-
-<div class='jumbotron'>
-  <% if @representative %>
-    <h2>Ready to Call</h2>
-    <div class="well">
-      <img src="http://res.cloudinary.com/dm0czpc8q/image/facebook/c_thumb,e_improve,g_face,h_90,r_max,w_90/<%= @representative.facebook_id %>.png" />
-      <%= @representative.display_name %>
-      <a class="phone-number btn btn-primary" href="tel:<%= @representative.phone %>"><%= @representative.phone %></a></span>
-</div>
-<form>
-  <input type="hidden" name="rep_id" value="<%= @representative.bioguide_id %>" />
-  <input type="hidden" name="address" value="<%= params[:address] %>" />
-  <input type="hidden" name="i_called" value="yes" />
-  	<p>
-	  <button type="submit" class="btn btn-primary btn-lg"><span class='glyphicon glyphicon-check' aria-hidden="true"></span> I did it!</button>
-	</p>
-</form>
-    <%= simple_format @calling_script.content % @substitutions %>
-  <% elsif @representatives %>
-    <form method="get">
-      <input type="hidden" name="address" value="<%= params[:address] %>" />
-      <fieldset class="form-group">
-	<legend>Your Representatives (choose one to call first)</legend>
-	<div class="form-check btn-group" data-toggle="buttons">
-	  <% @representatives.each do |rep| %>
-	    <label class="form-check-label btn btn-primary
-		   <% if Call.find_by_calling_script_id_and_user_id_and_rep_id(@calling_script.id, (@current_user.try(:id) || @request.remote_ip), rep.bioguide_id) %>
-disabled <% end %>    ">
-		<input type="radio" class="form-check-input" value="<%= 
-rep.bioguide_id %>" name="rep_id">
-		<img src="http://res.cloudinary.com/dm0czpc8q/image/facebook/c_thumb,e_improve,g_face,h_90,r_max,w_90/<%= rep.facebook_id %>.png" />
-	      <%= rep.display_name %>
-	    </label>
-	  <% end %>
-	</div>
-      </fieldset>
-	<p>
-	  <button type="submit" class="btn btn-primary btn-lg"><span class='glyphicon glyphicon-phone' aria-hidden="true"></span>Let's Call! </button>
-	</p>
-
-	<input type="hidden" name="address" value="<%= params[:address] %>" />
-	<input type="hidden" name="name" value="<%= params[:name] %>" />
-    </form>
-  <% else %>
-    <h1>Call about <%= @calling_script.topic %></h1>
-    <form method="get">
-      <div class="form-group">
-	<label for="name">Your Name</label>
-	<input type="text" class="form-control" placeholder="Enter your name" name="name" />
-	<div id="gmaps-error"></div>
-	<input type="address" class="form-control" placeholder="Enter your street address" name="address" id="gmaps-input-address" />
-	<small class="form-text text-muted">We don't store this information; it's just to find your representatives and populate the script.</small>
-      </div>
-
-      <button type="submit" class="btn btn-primary">Find my reps!</button>
-    </form>
-  <% end %>
+<div class='row'>
+  <div class='col-md-6'>
+    <div class='jumbotron'>
+      <% if @representative %>
+	<%= render :partial => 'calling_info' %>
+      <% elsif @representatives %>
+	<%= render :partial => 'rep_chooser' %>
+      <% else %>
+	<%= render :partial => 'user_locator' %>
+      <% end %>
+    </div>
+  </div>
+  <div class='col-md-6'>
+    <%= render :partial => 'show_script' %>
+  </div>
 </div>

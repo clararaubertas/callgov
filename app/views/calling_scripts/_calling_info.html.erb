@@ -1,0 +1,18 @@
+<h2>Ready to Call</h2>
+<div class="well">
+  <img src="http://res.cloudinary.com/dm0czpc8q/image/facebook/c_thumb,e_improve,g_face,h_90,r_max,w_90/<%= @representative.facebook_id %>.png" />
+  <%= @representative.display_name %>
+</div>
+<div class='well'>
+  <a class="phone-number btn btn-primary" href="tel:<%= @representative.phone %>"><%= @representative.phone %></a>
+</div>
+
+<form>
+  <input type="hidden" name="rep_id" value="<%= @representative.bioguide_id %>" />
+  <input type="hidden" name="address" value="<%= params[:address] %>" />
+  <input type="hidden" name="i_called" value="yes" />
+  	<p>
+	  <button type="submit" class="btn btn-primary btn-lg"><span class='glyphicon glyphicon-check' aria-hidden="true"></span> I did it!</button>
+	</p>
+</form>
+

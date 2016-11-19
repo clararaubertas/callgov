@@ -24,4 +24,9 @@ jQuery(function() {
     var input = document.getElementById('gmaps-input-address');
     var autocomplete = new google.maps.places.Autocomplete(input);
 
+    
+    $('#rep-chooser input[type=radio]').on('change', function() {
+	$(this).closest("form").submit();
+    });
+    
 });
