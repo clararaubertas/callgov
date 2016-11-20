@@ -25,11 +25,10 @@ td a:hover { text-decoration: none; }
 
 .navbar-inverse .navbar-nav > li > a {
     color: #fff;
-
 }
 
-.navbar-inverse .btn { padding: 5px; margin-top: 20px; margin-right: 1em; }
-.navbar-inverse .btn-twitter, .navbar-inverse .btn-facebook, .navbar-inverse .btn-google { font-size: .8em; margin-right: 0; }
+.navbar-inverse .btn { padding: 5px; margin-top: 20px; margin-bottom: 20px; margin-left: 5px; margin-right: 5px;}
+.navbar-inverse .btn-twitter, .navbar-inverse .btn-facebook, .navbar-inverse .btn-google { font-size: .8em; }
 
 .navbar-inverse .navbar-brand {
     color: #fff;
@@ -56,26 +55,27 @@ h1.title { font-size: 1.6em; }
   background-color: #cfcfcf;
 }
 
-.row-striped div { padding-top: 1em; padding-bottom: 1.5em; }
+/*margin vertical medium (eventually we can add more of these)*/
+.mvm {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
 
 .footer {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     width: 100%;
     font-size: .6em;
-    height: 60px;
 }
 
 html {
-    position: relative;
-    min-height: 100%;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0 0 60px; /* bottom = footer height */
-}
-
-@media (max-device-width: 700px) {
-    body { margin: 0 0 120px; }
-    .footer { height: 120px; }
+  position: relative;
+  margin: 0;
+  padding-bottom: 4em;
+  min-height: 100%;
 }
