@@ -13,7 +13,7 @@ class CallingScriptsController < ApplicationController
   def show
     @request = request
     if params[:i_called]
-      Call.find_or_create_by(:rep_id => params[:rep_id], :calling_script_id => @calling_script.id, :user_id => (@current_user.try(:id) || request.remote_ip))
+      @calling_script.record_call(params[:rep_id], @current_user.try(:id) || request.remote_ip)
       flash[:notice] = "Call completed!"
       if Call.find(:all, conditions: { calling_script_id: @calling_script.id, user_id: (@current_user.try(:id) || request.remote_ip)}).size < 3 
       @representatives = Sunlight::Legislator.all_for(:address => params[:address])

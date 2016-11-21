@@ -64,7 +64,7 @@ RSpec.describe CallingScriptsController, type: :controller do
     it "creates a call" do
       calling_script = FactoryGirl.create(:calling_script)
       expect {
-        get :show, id: calling_script.to_param, :rep_id => FactoryGirl.create(:call).rep_id
+        get :show, id: calling_script.to_param, :rep_id => FactoryGirl.create(:call).rep_id, :i_called => true
       }.to change(Call, :count)
     end
   end
