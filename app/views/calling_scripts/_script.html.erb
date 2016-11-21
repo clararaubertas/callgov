@@ -5,29 +5,35 @@
   </div>
   <div class='col-xs-5'>
     <div class='row'>
-      <div class='col-sm-6 mvm'>
-        <span class="btn btn-primary">
-          <span class='badge'>
+      <div class='col-sm-5 mvm'>
+        <span class="label label-primary call-numbers">
+          <span class='badge badge-primary'>
             <%= calling_script.calls.size %>
           </span>
           calls
         </span>
       </div>
-      <div class='col-sm-6 mvm'>
+      <div class='col-sm-7 mvm'>
         <% if calling_script.called_yet?(current_user, @request.remote_ip) %>
-          <span class='btn'><span class="glyphicon glyphicon-check"></span>
-            Called</span>
-          <%= link_to calling_script, class: 'btn btn-secondary' do %>
-            <span class="glyphicon glyphicon-phone"></span>
-            (call again)
-          <% end %>
+	  <div class='row'>
+	    <div class='col-sm-6'>
+              <span class='label label-default'><span class="glyphicon glyphicon-check"></span>
+		Called</span>
+	    </div>
+	    <div class='col-sm-6'>
+              <%= link_to calling_script, class: 'btn btn-secondary' do %>
+              <span class="glyphicon glyphicon-phone"></span>
+              (call again)
+	<% end %>
+	</div>
+	</div>
         <% else %>
-          <%= link_to calling_script, class: 'btn btn-primary' do %>
-            <span class="glyphicon glyphicon-phone"></span>
-            Call Now!
-          <% end %>
-        <% end %>
-      </div>
+          <%= link_to calling_script, class: 'btn btn-primary call' do %>
+          <span class="glyphicon glyphicon-phone"></span>
+          Call Now!
+<% end %>
+<% end %>
+</div>
     </div>
   </div>
 </div>

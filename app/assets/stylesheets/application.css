@@ -52,7 +52,7 @@ h1.title { font-size: 1.6em; }
 }
 
 .row-striped:nth-of-type(even){
-  background-color: #cfcfcf;
+  background-color: #c8d3e6;
 }
 
 /*margin vertical medium (eventually we can add more of these)*/
@@ -79,3 +79,17 @@ body {
   padding-bottom: 4em;
   min-height: 100%;
 }
+
+.btn-secondary { background: #fff; }
+#script-list .btn, #script-list .label { display: block; }
+
+#script-list .label { padding: 1em; }
+.call-numbers .badge { background: #fff; color: #ac0000; }
+
+@media only screen 
+  and (min-width: 800px) 
+  {
+  a.call { font-size: 1.4em; }
+
+}
+
