@@ -86,7 +86,18 @@ body {
 .call-numbers .badge { background: #fff; color: #ac0000; }
 .sort-links .btn-secondary { border: 1px solid #002566; }
 
+.well p { margin-bottom: 0; }
 
+.form-group.required .control-label:after {
+    font-family: 'FontAwesome';
+    font-weight: normal;
+    font-size: .8em;
+    content: "\f069";
+    color: #ac0000;
+    position: absolute;
+    top: .3em;
+    right: .3em;
+}
 
 @media only screen 
   and (min-width: 800px) 

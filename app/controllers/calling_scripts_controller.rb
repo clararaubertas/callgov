@@ -6,16 +6,15 @@ class CallingScriptsController < ApplicationController
   load_and_authorize_resource
 
   # GET /calling_scripts
-  # GET /calling_scripts.json
   def index
-    @calling_scripts = smart_listing_create(:calling_scripts, CallingScript.all, partial: "calling_scripts/script", default_sort: {calls_count: "asc"})
+    @calling_scripts = smart_listing_create(:calling_scripts, CallingScript.all, partial: "calling_scripts/script", default_sort: {calls_count: "desc"})
     @request = request
   end
 
   # GET /calling_scripts/1
-  # GET /calling_scripts/1.json
   def show
     @request = request
+    @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, filter_html: true, no_images: true)
     if params[:i_called]
       @calling_script.record_call(params[:rep_id], @current_user.try(:id) || request.remote_ip)
       flash[:notice] = "Call completed!"
@@ -85,6 +84,6 @@ class CallingScriptsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def calling_script_params
-      params.require(:calling_script).permit(:content, :topic, :summary)
+      params.require(:calling_script).permit(:content, :topic, :summary, :notes)
     end
 end

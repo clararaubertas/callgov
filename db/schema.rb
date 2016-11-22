@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161122184356) do
+ActiveRecord::Schema.define(version: 20161122210007) do
 
   create_table "calling_scripts", force: :cascade do |t|
     t.text     "content"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20161122184356) do
     t.integer  "user_id"
     t.text     "summary"
     t.integer  "calls_count", default: 0
+    t.text     "notes"
   end
 
   create_table "calls", force: :cascade do |t|

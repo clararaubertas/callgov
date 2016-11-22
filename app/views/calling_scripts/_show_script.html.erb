@@ -1,9 +1,15 @@
 <div class='jumbotron'>
   <h2><%= @calling_script.topic %></h2>
   <div class='well'>
-    <%= @calling_script.summary %>
+    <%= simple_format @calling_script.summary %>
   </div>
   <%= simple_format @calling_script.content %>
+  <% unless @calling_script.notes.blank? %>
+    <div class='well'>
+      <h3>Notes:</h3>
+      <%= @markdown.render(@calling_script.notes).html_safe %>
+    </div>
+  <% end %>
   <p class='text-muted'>
     <small>script by
       <a href="<%= @calling_script.user.profile %>">
