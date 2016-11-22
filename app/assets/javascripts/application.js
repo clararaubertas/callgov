@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require gmaps-auto-complete
+//= require smart_listing
 //= require turbolinks
 //= require bootstrap
 //= require_tree .

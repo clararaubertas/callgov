@@ -1,6 +1,4 @@
-<div id="script-list">
-  <% @calling_scripts.each do |calling_script| %>
-    <%= render :partial => 'script', locals: {:calling_script => calling_script} %>
-  <% end %>
-</div>
+<%= smart_listing_render(:calling_scripts) %>
+
+
 

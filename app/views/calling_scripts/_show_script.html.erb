@@ -9,7 +9,8 @@
       <a href="<%= @calling_script.user.profile %>">
 	<span class='fa fa-<%= @calling_script.user.provider.gsub("_oauth2", "") %>'></span>
 	<img src="<%= @calling_script.user.picture %>" height="30" width="30">
-      </a>
+      </a> &bull;
+      	created <%= @calling_script.created_at.strftime("%B %e, %Y") %>
     </small>
   </p>
 </div>

@@ -80,11 +80,13 @@ body {
   min-height: 100%;
 }
 
-.btn-secondary { background: #fff; }
+#script-list .btn-secondary { background: #fff; }
 #script-list .btn, #script-list .label { display: block; }
-
 #script-list .label { padding: 1em; }
 .call-numbers .badge { background: #fff; color: #ac0000; }
+.sort-links .btn-secondary { border: 1px solid #002566; }
+
+
 
 @media only screen 
   and (min-width: 800px) 
@@ -92,4 +94,5 @@ body {
   a.call { font-size: 1.4em; }
 
 }
+
 

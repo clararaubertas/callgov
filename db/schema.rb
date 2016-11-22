@@ -11,15 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161118205247) do
+ActiveRecord::Schema.define(version: 20161122184356) do
 
   create_table "calling_scripts", force: :cascade do |t|
     t.text     "content"
     t.string   "topic"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "user_id"
     t.text     "summary"
+    t.integer  "calls_count", default: 0
   end
 
   create_table "calls", force: :cascade do |t|

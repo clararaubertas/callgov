@@ -1,40 +1,54 @@
-<div class='row row-striped'>
-  <div class='col-xs-7 mvm'>
-    <h3><%= link_to calling_script.topic, calling_script %></h3>
-    <%= link_to calling_script.summary, calling_script %>
+<% if smart_listing.empty? %>
+  <p class='warning'>No scripts found!</p>
+<% else %>
+  <div class='btn-group sort-links mvm' role='group'bb aria-label="Sort scripts">
+    <%= smart_listing.sortable "Number of Calls", :calls_count %>
+    <%= smart_listing.sortable "Topic", :topic %>
+    <%= smart_listing.sortable "Date", :created_at, :class => 'btn' %>
   </div>
-  <div class='col-xs-5'>
-    <div class='row'>
-      <div class='col-sm-5 mvm'>
-        <span class="label label-primary call-numbers">
-          <span class='badge badge-primary'>
-            <%= calling_script.calls.size %>
-          </span>
-          calls
-        </span>
+  <div id="script-list">
+  <% smart_listing.collection.each do |calling_script| %>
+    <div class='row row-striped'>
+      <div class='col-xs-7 mvm'>
+	<h3><%= link_to calling_script.topic, calling_script %></h3>
+	<%= link_to (simple_format calling_script.summary), calling_script %>
+	<p><small class="text-muted"><%= calling_script.created_at.strftime("%B %e, %Y") %></small></p>
       </div>
-      <div class='col-sm-7 mvm'>
-        <% if calling_script.called_yet?(current_user, @request.remote_ip) %>
-	  <div class='row'>
-	    <div class='col-sm-6'>
-              <span class='label label-default'><span class="glyphicon glyphicon-check"></span>
-		Called</span>
-	    </div>
+      <div class='col-xs-5'>
+	<div class='row'>
+	  <div class='col-sm-5 mvm'>
+            <span class="label label-primary call-numbers">
+              <span class='badge badge-primary'>
+		<%= calling_script.calls_count %>
+          </span>
+              calls
+            </span>
+	  </div>
+	  <div class='col-sm-7 mvm'>
+            <% if calling_script.called_yet?(current_user, @request.remote_ip) %>
+	      <div class='row'>
+		<div class='col-sm-6'>
+		  <span class='label label-default'><span class="glyphicon glyphicon-check"></span>
+		    Called</span>
+		</div>
 	    <div class='col-sm-6'>
               <%= link_to calling_script, class: 'btn btn-secondary' do %>
               <span class="glyphicon glyphicon-phone"></span>
               (call again)
-	<% end %>
+	    <% end %>
 	</div>
-	</div>
+	    </div>
         <% else %>
           <%= link_to calling_script, class: 'btn btn-primary call' do %>
           <span class="glyphicon glyphicon-phone"></span>
           Call Now!
-<% end %>
+  <% end %>
 <% end %>
 </div>
-    </div>
+</div>
   </div>
 </div>
-
+<% end %>
+</div>
+<%= smart_listing.paginate %>
+<% end %>

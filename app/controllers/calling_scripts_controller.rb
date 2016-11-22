@@ -1,10 +1,14 @@
 class CallingScriptsController < ApplicationController
+
+  include SmartListing::Helper::ControllerExtensions
+  helper  SmartListing::Helper
+  
   load_and_authorize_resource
 
   # GET /calling_scripts
   # GET /calling_scripts.json
   def index
-    @calling_scripts = CallingScript.all
+    @calling_scripts = smart_listing_create(:calling_scripts, CallingScript.all, partial: "calling_scripts/script", default_sort: {calls_count: "asc"})
     @request = request
   end
 
