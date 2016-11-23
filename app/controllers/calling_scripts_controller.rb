@@ -27,6 +27,9 @@ class CallingScriptsController < ApplicationController
       @representative = Sunlight::Legislator.all_where(:bioguide_id => params[:rep_id]).first
     elsif params[:address]
       @representatives = Sunlight::Legislator.all_for(:address => params[:address])
+      if @representatives.empty?
+        flash[:error] = "We couldn't find any representatives matching the address you entered."
+      end
     end
   end
 

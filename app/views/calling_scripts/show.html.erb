@@ -3,7 +3,7 @@
     <div class='jumbotron'>
       <% if @representative %>
 	<%= render :partial => 'calling_info' %>
-      <% elsif @representatives %>
+      <% elsif @representatives && !(@representatives.empty?) %>
 	<%= render :partial => 'rep_chooser' %>
       <% else %>
 	<%= render :partial => 'user_locator' %>
