@@ -83,6 +83,7 @@ body {
 #script-list .btn-secondary { background: #fff; }
 #script-list .btn, #script-list .label { display: block; }
 #script-list .label { padding: 1em; }
+#script-list { padding-bottom: 2em; }
 .call-numbers .badge { background: #fff; color: #ac0000; }
 .sort-links .btn-secondary { border: 1px solid #002566; }
 
@@ -96,7 +97,7 @@ body {
     color: #ac0000;
     position: absolute;
     top: .3em;
-    right: .3em;
+    right: ;
 }
 
 @media only screen 

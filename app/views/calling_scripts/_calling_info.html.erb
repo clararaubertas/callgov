@@ -4,9 +4,14 @@
   <%= @representative.display_name %>
 </div>
 <div class='well'>
-  <a class="phone-number btn btn-primary" href="tel:<%= @representative.phone %>"><%= @representative.phone %></a>
-</div>
+  <p>  <a class="phone-number btn btn-primary" href="tel:<%= @representative.phone %>"><%= @representative.phone %></a></p>
+  <br />
+<div class='muted-text'>
+    <small>Click to call if you're on a phone, or to use a program like Skype; otherwise, just pick up your phone and dial the number.</small>
+</div><br />
+  <div class='muted-text'><small>Once you're done, click below to record your call!</small></div>
 
+</div>
 <form>
   <input type="hidden" name="rep_id" value="<%= @representative.bioguide_id %>" />
   <input type="hidden" name="address" value="<%= params[:address] %>" />
