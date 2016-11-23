@@ -89,6 +89,8 @@ body {
 
 .well p { margin-bottom: 0; }
 
+.user-info a:hover { text-decoration: none; }
+
 .form-group.required .control-label:after {
     font-family: 'FontAwesome';
     font-weight: normal;

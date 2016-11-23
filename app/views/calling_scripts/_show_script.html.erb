@@ -10,7 +10,7 @@
       <%= @markdown.render(calling_script.notes).html_safe %>
     </div>
   <% end %>
-  <p class='text-muted'>
+  <p class='text-muted user-info'>
     <small>script by
       <a href="<%= calling_script.user.profile %>">
 	<span class='fa fa-<%= calling_script.user.provider.gsub("_oauth2", "") %>'></span>
