@@ -4,7 +4,7 @@
     <legend>Your Representatives (choose one to call first)</legend>
     <div class="btn-group" data-toggle="buttons">
       <div class="form-check">
-	<% @representatives.each do |rep| %>
+	<% representatives.each do |rep| %>
 	  <label class="form-check-label btn btn-primary
 			<% if Call.find_by_calling_script_id_and_user_id_and_rep_id(@calling_script.id, (@current_user.try(:id) || @request.remote_ip), rep.bioguide_id) %>
 			  disabled <% end %>    ">

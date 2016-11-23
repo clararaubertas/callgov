@@ -1,10 +1,10 @@
 <h2>Ready to Call</h2>
 <div class="well">
-  <img src="http://res.cloudinary.com/dm0czpc8q/image/facebook/c_thumb,e_improve,g_face,h_90,r_max,w_90/<%= @representative.facebook_id %>.png" />
-  <%= @representative.display_name %>
+  <img src="http://res.cloudinary.com/dm0czpc8q/image/facebook/c_thumb,e_improve,g_face,h_90,r_max,w_90/<%= representative.facebook_id %>.png" />
+  <%= representative.display_name %>
 </div>
 <div class='well'>
-  <p>  <a class="phone-number btn btn-primary" href="tel:<%= @representative.phone %>"><%= @representative.phone %></a></p>
+  <p>  <a class="phone-number btn btn-primary" href="tel:<%= representative.phone %>"><%= representative.phone %></a></p>
   <br />
 <div class='muted-text'>
     <small>Click to call if you're on a phone, or to use a program like Skype; otherwise, just pick up your phone and dial the number.</small>
@@ -13,7 +13,7 @@
 
 </div>
 <form>
-  <input type="hidden" name="rep_id" value="<%= @representative.bioguide_id %>" />
+  <input type="hidden" name="rep_id" value="<%= representative.bioguide_id %>" />
   <input type="hidden" name="address" value="<%= params[:address] %>" />
   <input type="hidden" name="i_called" value="yes" />
   	<p>

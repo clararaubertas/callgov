@@ -16,20 +16,11 @@ class CallingScriptsController < ApplicationController
     @request = request
     @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, filter_html: true, no_images: true)
     if params[:i_called]
-      @calling_script.record_call(params[:rep_id], @current_user.try(:id) || request.remote_ip)
-      flash[:notice] = "Call completed!"
-      if Call.find(:all, conditions: { calling_script_id: @calling_script.id, user_id: (@current_user.try(:id) || request.remote_ip)}).size < 3 
-      @representatives = Sunlight::Legislator.all_for(:address => params[:address])
-      else
-        redirect_to calling_scripts_path
-      end
+      finish_call
     elsif params[:rep_id]
-      @representative = Sunlight::Legislator.all_where(:bioguide_id => params[:rep_id]).first
+      find_representative_from_id
     elsif params[:address]
-      @representatives = Sunlight::Legislator.all_for(:address => params[:address])
-      if @representatives.empty?
-        flash[:error] = "We couldn't find any representatives matching the address you entered."
-      end
+      find_representatives_from_location
     end
   end
 
@@ -43,32 +34,22 @@ class CallingScriptsController < ApplicationController
   end
 
   # POST /calling_scripts
-  # POST /calling_scripts.json
   def create
     @calling_script = CallingScript.new(calling_script_params)
     @calling_script.user = @current_user
-    respond_to do |format|
-      if @calling_script.save
-        format.html { redirect_to @calling_script, notice: 'Calling script was successfully created.' }
-        format.json { render :show, status: :created, location: @calling_script }
-      else
-        format.html { render :new }
-        format.json { render json: @calling_script.errors, status: :unprocessable_entity }
-      end
+    if @calling_script.save
+        redirect_to @calling_script, notice: 'Calling script was successfully created.' 
+    else
+      render :new 
     end
   end
 
   # PATCH/PUT /calling_scripts/1
-  # PATCH/PUT /calling_scripts/1.json
   def update
-    respond_to do |format|
-      if @calling_script.update(calling_script_params)
-        format.html { redirect_to @calling_script, notice: 'Calling script was successfully updated.' }
-        format.json { render :show, status: :ok, location: @calling_script }
-      else
-        format.html { render :edit }
-        format.json { render json: @calling_script.errors, status: :unprocessable_entity }
-      end
+    if @calling_script.update(calling_script_params)
+      redirect_to @calling_script, notice: 'Calling script was successfully updated.' 
+    else
+      render :edit 
     end
   end
 
@@ -76,13 +57,38 @@ class CallingScriptsController < ApplicationController
   # DELETE /calling_scripts/1.json
   def destroy
     @calling_script.destroy
-    respond_to do |format|
-      format.html { redirect_to calling_scripts_url, notice: 'Calling script was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to calling_scripts_url, notice: 'Calling script was successfully destroyed.' 
   end
 
   private
+
+  def find_representative_from_id
+    @representative = Sunlight::Legislator.all_where(:bioguide_id => params[:rep_id]).first
+  end
+  
+  def find_representatives_from_location
+    @representatives = Sunlight::Legislator.all_for(:address => params[:address])
+    if @representatives.blank?
+      flash[:error] = "We couldn't find any representatives matching the address you entered."
+    end
+  end
+
+  def finish_call
+    @id = @current_user.try(:id)
+    @ip = request.remote_ip
+    @calling_script.record_call(params[:rep_id], @id || @ip)
+    flash[:notice] = "Call completed!"
+    next_rep_or_return
+  end
+
+  def next_rep_or_return
+        if Call.find(:all, conditions: { calling_script_id: @calling_script.id, user_id: (@id || @ip)}).size < 3
+      find_representatives_from_location
+    else
+      redirect_to calling_scripts_path
+    end
+  end
+  
     # Use callbacks to share common setup or constraints between actions.
 
     # Never trust parameters from the scary internet, only allow the white list through.
