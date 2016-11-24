@@ -61,10 +61,27 @@ module Sunlight
 
     attr_accessor :first_name, :last_name, :phone, :website, :office, :chamber
 
+    def party_name
+      if party == 'R'
+        'republican'
+      elsif party == 'D'
+        'democrat'
+      end
+    end
+    
+    def display_image
+      if twitter_id
+        "<img src='http://res.cloudinary.com/dm0czpc8q/image/twitter_name/c_thumb,e_improve,g_face,h_100,r_max,w_100/#{twitter_id}.png' class='rep-image #{party_name}' />".html_safe
+      elsif facebook_id
+        "<img src='http://res.cloudinary.com/dm0czpc8q/image/facebook/c_thumb,e_improve,g_face,h_100,r_max,w_100/#{facebook_id}.png' class='rep-image #{party_name}' />".html_safe
+      end
+    end
+
+    
     def display_name
       title = (chamber == 'senate') ? "Senator" : "Representative"
       my_district = (chamber == 'house') ? district : ""
-      "#{title} #{first_name} #{last_name} (#{party}-#{state}#{(chamber == 'house') ? " " : ""}#{district})"
+      "#{title}&nbsp;#{first_name}&nbsp;#{last_name} (#{party}&#8209;#{state}#{(chamber == 'house') ? "&nbsp;" : ""}#{district})".html_safe
     end
     
     def self.all_where(params)

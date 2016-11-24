@@ -1,28 +1,23 @@
 <h2>Your Representatives</h2>
 <div class="row">
-<form method="get" id="rep-chooser">
-  <input type="hidden" name="address" value="<%= params[:address] %>" />
-  <fieldset class="form-group">
-    <div class="col-xs-12">
-      <legend>(choose one to call)</legend>
-    </div>
-    <div class="btn-group" data-toggle="buttons">
-      <div class="form-check">
-	<% representatives.each do |rep| %>
-
+  <form method="get" id="rep-chooser">
+    <input type="hidden" name="address" value="<%= params[:address] %>" />
+    <fieldset class="form-group">
+      <div class="col-xs-12">
+	<legend>(choose one to call)</legend>
+      </div>
+      <div class="btn-group" data-toggle="buttons">
+	<div class="form-check">
+	  <% representatives.each do |rep| %>
 	    <div class="col-xs-12">
-	      <label class="form-check-label btn btn-primary
-			    <% if Call.find_by_calling_script_id_and_user_id_and_rep_id(@calling_script.id, (@current_user.try(:id) || @request.remote_ip), rep.bioguide_id) %>
-			      disabled <% end %>    ">
+	      <label class="form-check-label btn btn-primary btn-<%= rep.party_name %>
+			    <% if @calling_script.called_yet?(@current_user, @request.ip, rep.bioguide_id) %>disabled
+			    <% end %>">
 		<input type="radio" class="form-check-input" value="<%= 
 								    rep.bioguide_id %>" name="rep_id">
 		<div class='row'>
 		  <div class='col-md-3 col-sm-12'>
-		<% if rep.facebook_id %>
-		  <img src="http://res.cloudinary.com/dm0czpc8q/image/facebook/c_thumb,e_improve,g_face,h_90,r_max,w_90/<%= rep.facebook_id %>.png" />
-		<% elsif rep.twitter_id %>
-		  <img src="http://res.cloudinary.com/dm0czpc8q/image/twitter/c_thumb,e_improve,g_face,h_90,r_max,w_90/<%= rep.twitter_id %>.png" />
-		<% end %>
+		    <%= rep.display_image %>
 		  </div>
 		  <div class='col-md-9 col-sm-12'>
 		    <h4><%= rep.display_name %></h4>
@@ -30,11 +25,12 @@
 		</div>
 	      </label>
 	    </div>
-	<% end %>
-      </div>
 
-  </fieldset>
-  <input type="hidden" name="address" value="<%= params[:address] %>" />
-  <input type="hidden" name="name" value="<%= params[:name] %>" />
-</form>
-    </div>
+	  <% end %>
+	</div>
+      </div>
+    </fieldset>
+    <input type="hidden" name="address" value="<%= params[:address] %>" />
+    <input type="hidden" name="name" value="<%= params[:name] %>" />
+  </form>
+</div>

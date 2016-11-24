@@ -2,18 +2,23 @@
 <div class="well">
   <div class='row'>
     <div class='col-xs-3'>
-      <img src="http://res.cloudinary.com/dm0czpc8q/image/facebook/c_thumb,e_improve,g_face,h_90,r_max,w_90/<%= representative.facebook_id %>.png" />
+      <%= representative.display_image %>
     </div>
     <div class='col-xs-9'>
-      <h4 class='mvm'><%= representative.display_name %></h4>
+      <h4 class='mvm
+	  <%= 'democrat' if representative.party == 'D' %>
+	  <%= 'republican' if representative.party == 'R' %>
+	  '>
+	<%= representative.display_name %>
+      </h4>
     </div>
     <div class='col-xs-12 mvm'>
       <a class="phone-number btn btn-primary" href="tel:<%= representative.phone %>"><%= representative.phone %></a>
-        <div class='muted-text'>
-    <small>Click to call if you're on a phone, or to use a program like Skype; otherwise, just pick up your phone and dial the number.</small>
-	</div>
+      <div class='muted-text'>
+	<small>Click to call if you're on a phone, or to use a program like Skype; otherwise, just pick up your phone and dial the number.</small>
+      </div>
     </div>
-    </div>
+  </div>
   
   <br />
   <div class='muted-text'><small>Once you're done, click below to record your call!</small></div>

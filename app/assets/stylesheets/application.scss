@@ -54,11 +54,11 @@ h1.title { font-size: 2.6em; }
 .row h3 { margin-top: 0; }
 
 .row-striped:nth-of-type(odd){
-  background-color: #efefef;
+    background-color: lighten($light-blue, 10%);
 }
 
 .row-striped:nth-of-type(even){
-  background-color: #c8d3e6;
+    background-color: $light-blue;
 }
 
 /*margin vertical medium (eventually we can add more of these)*/
@@ -108,6 +108,15 @@ body {
     right: 0em;
 }
 
+.btn-democrat, .democrat { background-color: $dark-blue; }
+.btn-republican, .republican { background-color: $red; }
+.btn-republican:hover { background-color: darken($red, 10%); }
+.btn-republican.disabled { background-color: lighten($red, 10%);}
+.btn-republican,.btn-republican.disabled {  border-color: $red; }
+h4.democrat, h4.republican { color: #fff; border-radius: $border-radius-base; padding: 1em; vertical-align: middle; margin-top: 2em; }
+.btn-democrat h4, .btn-republican h4 { margin-top: 3em; }
+
+.rep-image { display: block; margin: auto; padding: 1em; border-radius: 50%; }
 
 body {
   padding-top: $navbar-height + 10px;

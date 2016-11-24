@@ -45,28 +45,38 @@ RSpec.describe CallingScriptsController, type: :controller do
   end
 
   describe "GET #show" do
+    before(:each) do
+      @calling_script = FactoryGirl.create(:calling_script)
+      @call = FactoryGirl.create(:call)
+      @user = FactoryGirl.create(:user)
+    end
+    subject { get :show, id: @calling_script.to_param, :i_called => true, :rep_id => FactoryGirl.create(:call).rep_id }
     it "assigns the requested calling_script as @calling_script" do
-      calling_script = FactoryGirl.create(:calling_script)
-      get :show, id: calling_script.to_param
-      expect(assigns(:calling_script)).to eq(calling_script)
+      get :show, id: @calling_script.to_param
+      expect(assigns(:calling_script)).to eq(@calling_script)
     end
     it "assigns a representative if appropriate" do
-      calling_script = FactoryGirl.create(:calling_script)
-      call = FactoryGirl.create(:call)
-      get :show, id: calling_script.to_param, :rep_id => call.rep_id
-      expect(assigns(:representative).first_name).to eq call.rep.first_name
+      get :show, id: @calling_script.to_param, :rep_id => @call.rep_id
+      expect(assigns(:representative).first_name).to eq @call.rep.first_name
     end
     it "gets several reps with an address" do
-      calling_script = FactoryGirl.create(:calling_script)
-      get :show, id: calling_script.to_param, :address => "5509 S Hyde Park #3 Chicago IL 60637"
+      get :show, id: @calling_script.to_param, :address => "5509 S Hyde Park #3 Chicago IL 60637"
       expect(assigns(:representatives).size).to eq 3
     end
     it "creates a call" do
-      calling_script = FactoryGirl.create(:calling_script)
-      expect {
-        get :show, id: calling_script.to_param, :rep_id => FactoryGirl.create(:call).rep_id, :i_called => true
-      }.to change(Call, :count)
+      expect { get :show, id: @calling_script.to_param, :rep_id => FactoryGirl.create(:call).rep_id, :i_called => true }.to change(Call, :count)
     end
+    it "redirects to the script" do
+      sign_in(@user)
+      2.times { FactoryGirl.create(:call, :user_id => @user.id, :calling_script_id => @calling_script.id) }
+      expect(subject).to render_template(:show) 
+    end
+    it "redirects back after 3 reps" do
+      sign_in(@user)
+      3.times { FactoryGirl.create(:call, :user_id => @user.id, :calling_script_id => @calling_script.id) }
+      expect(subject).to redirect_to(scripts_path) 
+    end
+    
   end
   
   describe "GET #new" do

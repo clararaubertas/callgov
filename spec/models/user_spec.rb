@@ -2,20 +2,21 @@ require 'rails_helper'
 
 
 google_hash = OmniAuth::AuthHash.new({
-  :provider => 'google_oauth2',
-  :uid => '1234',
-  :info => {
-    :email => "user2@example.com",
-    :name => "Justin Bieber"
-  }}
+                                       :provider => 'google_oauth2',
+                                       :uid => '110031535020051778989',
+                                       :info => {
+                                         :email => "user2@example.com",
+                                         :name => "Barack Obama"
+                                       }}
                                     )
+
 facebook_hash = OmniAuth::AuthHash.new ({
                                           :provider => "facebook", 
                                           :uid => 1234, :info => {
                                           :email => "user@example.com",
 
-                                        }})
-     
+                                        }}
+)
 
 RSpec.describe User, type: :model do
 
@@ -27,9 +28,10 @@ RSpec.describe User, type: :model do
     expect(User.count).to eq(0)
     omniauth_user = User.from_omniauth(google_hash)
     expect(User.count).to eq(1)
+    expect(omniauth_user.profile).to eq "https://plus.google.com/#{google_hash.uid}"
   end
 
-  it "creates the other kind" do
+  it "creates a picture" do
     omniauth_user = User.from_omniauth(facebook_hash)
     expect(omniauth_user.picture).to be_present
   end

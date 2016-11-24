@@ -24,8 +24,9 @@ class User < ActiveRecord::Base
     elsif provider == 'twitter'
       self.profile = auth.info.try(:urls).try(:Twitter)
     elsif provider == 'google_oauth2'
-      url = URI.parse("http://plus.google.com/#{uid}") 
-      if Net::HTTP.new(url.host, url.port).request_head(url.path).code == "200"
+      url = "https://plus.google.com/#{uid}"
+      response = Net::HTTP.get_response(URI.parse(url))
+      if (response.code == '200')  || (response.code == '302')
         self.profile = url
       end
     end

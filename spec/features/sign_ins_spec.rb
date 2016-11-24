@@ -12,6 +12,7 @@ RSpec.feature "SignIns", type: :feature do
     OmniAuth.config.mock_auth[:twitter] = hash
     OmniAuth.config.mock_auth[:facebook] = hash
     OmniAuth.config.mock_auth[:google_oauth2] = hash
+
     Rails.application.env_config["devise.mapping"] = Devise.mappings[:user] # If using Devise
     Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter]
     
@@ -20,18 +21,18 @@ RSpec.feature "SignIns", type: :feature do
   let(:user) { create(:user) } 
 
   scenario "can't authenticate" do
-    OmniAuth.config.mock_auth[:twitter] = :invalid_credentials
+    OmniAuth.config.mock_auth[:twitter] = :nothing
     visit '/'
     expect(page).to have_no_content 'Logout'
-    click_link 'Sign in with Twitter' # image/button: Sign in with LinkedIn
-    expect(page).to have_content "Invalid credentials"
+    click_link 'Sign in with Twitter' # image/button: Sign in with Twitter
+    expect(page).to have_content "Could not authenticate"
     expect(page).to have_no_content 'Logout'
   end
   
   scenario 'with valid email and password, Twitter' do
     visit '/'
     expect(page).to have_no_content 'Logout'
-    click_link 'Sign in with Twitter' # image/button: Sign in with LinkedIn
+    click_link 'Sign in with Twitter' # image/button: Sign in with Twitter
     expect(page).to have_content 'Successfully authenticated from Twitter'
     expect(page).to have_content 'Logout'
   end
@@ -39,7 +40,7 @@ RSpec.feature "SignIns", type: :feature do
   scenario "with Google" do
     visit '/'
     expect(page).to have_no_content 'Logout'
-    click_link 'Sign in with Google' # image/button: Sign in with LinkedIn
+    click_link 'Sign in with Google' # image/button: Sign in with Google
     expect(page).to have_content 'Successfully authenticated from Google'
     
   end

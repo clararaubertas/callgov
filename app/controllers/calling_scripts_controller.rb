@@ -82,7 +82,7 @@ class CallingScriptsController < ApplicationController
   end
 
   def next_rep_or_return
-        if Call.find(:all, conditions: { calling_script_id: @calling_script.id, user_id: (@id || @ip)}).size < 3
+    if Call.find(:all, conditions: { calling_script_id: @calling_script.id, user_id: (@id || @ip)}).size < 3
       find_representatives_from_location
     else
       redirect_to scripts_path
@@ -90,9 +90,8 @@ class CallingScriptsController < ApplicationController
   end
   
     # Use callbacks to share common setup or constraints between actions.
-
     # Never trust parameters from the scary internet, only allow the white list through.
-    def calling_script_params
-      params.require(:calling_script).permit(:content, :topic, :summary, :notes)
-    end
+  def calling_script_params
+    params.require(:calling_script).permit(:content, :topic, :summary, :notes)
+  end
 end

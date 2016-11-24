@@ -15,20 +15,19 @@
 //= require jquery-ui
 //= require gmaps-auto-complete
 //= require smart_listing
-//= require turbolinks
 //= require bootstrap
 //= require social-share-button
 //= require_tree .
 
 
-jQuery(function() {
 
+$(document).ready(function() {
+    console.log('foo');
     var input = document.getElementById('gmaps-input-address');
     var autocomplete = new google.maps.places.Autocomplete(input);
-
-    
+    console.log('bar');
     $('#rep-chooser input[type=radio]').on('change', function() {
 	$(this).closest("form").submit();
     });
-    
 });
+

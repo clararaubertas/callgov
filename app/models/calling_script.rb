@@ -16,8 +16,13 @@ class CallingScript < ActiveRecord::Base
   end
   
 
-  def called_yet?(calling_user, ip)
-    Call.find_by_calling_script_id_and_user_id(id, (calling_user.try(:id) || ip)).present?
+  def called_yet?(calling_user, ip, rep_id = nil)
+    uid = calling_user.try(:id) || ip
+    if rep_id
+      Call.find_by_calling_script_id_and_user_id_and_rep_id(id, uid, rep_id).present?
+    else
+      Call.find_by_calling_script_id_and_user_id(id, uid).present?
+    end
   end
 
   def record_call(rep_id, user_id)
