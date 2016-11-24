@@ -26,17 +26,18 @@
 	  </div>
 	  <div class='col-sm-7 mvm'>
             <% if calling_script.called_yet?(current_user, @request.remote_ip) %>
-	      <div class='row'>
-		<div class='col-sm-6'>
+		<div class='row'>
+		<div class='col-sm-12 col-md-4'>
 		  <span class='label label-default'><span class="glyphicon glyphicon-check"></span>
 		    Called</span>
 		</div>
-	    <div class='col-sm-6'>
-              <%= link_to script_path(calling_script), class: 'btn btn-secondary' do %>
-              <span class="glyphicon glyphicon-phone"></span>
-              (call again)
+		<div class='col-sm-12 col-md-8'>
+		  <%= link_to script_path(calling_script), class: 'btn btn-secondary' do %>
+		  <span class="glyphicon glyphicon-phone"></span>
+		  (call again)
 	    <% end %>
-	</div>
+	    </div>
+
 	    </div>
         <% else %>
           <%= link_to script_path(calling_script), class: 'btn btn-primary call' do %>

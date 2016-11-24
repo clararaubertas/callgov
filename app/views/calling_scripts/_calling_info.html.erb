@@ -1,16 +1,16 @@
 <h2>Ready to Call</h2>
 <div class="well">
   <div class='row'>
-    <div class='col-xs-3'>
+    <div class='col-md-3 col-xs-12'>
       <%= representative.display_image %>
     </div>
-    <div class='col-xs-9'>
-      <h4 class='mvm
+    <div class='col-md-9 col-xs-12'>
+      <div class='display-name
 	  <%= 'democrat' if representative.party == 'D' %>
 	  <%= 'republican' if representative.party == 'R' %>
 	  '>
 	<%= representative.display_name %>
-      </h4>
+      </div>
     </div>
     <div class='col-xs-12 mvm'>
       <a class="phone-number btn btn-primary" href="tel:<%= representative.phone %>"><%= representative.phone %></a>

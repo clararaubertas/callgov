@@ -21,8 +21,7 @@
 
 @import "bootstrap-variables.scss";
 
-
-#rep-chooser .form-check-label { width: 100%; text-align: left; margin-bottom: 1em;  }
+#rep-chooser .form-check-label { text-align: left; margin-bottom: 1em;  }
 
 .logged-in-user { color: #fff; line-height: 20px; padding-top: 20px; padding-bottom: 25px; display: block; position: relative; font-weight: bold; }
 
@@ -48,7 +47,7 @@ td a:hover { text-decoration: none; }
 a:link, a:hover, a:visited { font-weight: bold; }
 
 body { font-family: 'Open Sans', sans-serif; }
-.navbar-brand, h1, h2, h3, h4, h5 { font-family: Bitter, serif; }
+.navbar-brand, h1, h2, h3, h4, h5, .display-name { font-family: Bitter, serif; }
 h1.title { font-size: 2.6em; }
 
 .row h3 { margin-top: 0; }
@@ -87,7 +86,8 @@ body {
 }
 
 #script-list .btn-secondary { background: #fff; }
-#script-list .btn, #script-list .label { display: block; }
+#script-list .btn, #script-list .label { display: block; text-align: center; padding: 0; padding-top: 5px; padding-bottom: 5px; }
+
 #script-list .label { padding: 1em; }
 #script-list { padding-bottom: 2em; }
 .call-numbers .badge { background: #fff; color: #ac0000; }
@@ -113,8 +113,15 @@ body {
 .btn-republican:hover { background-color: darken($red, 10%); }
 .btn-republican.disabled { background-color: lighten($red, 10%);}
 .btn-republican,.btn-republican.disabled {  border-color: $red; }
-h4.democrat, h4.republican { color: #fff; border-radius: $border-radius-base; padding: 1em; vertical-align: middle; margin-top: 2em; }
-.btn-democrat h4, .btn-republican h4 { margin-top: 3em; }
+.display-name {
+    color: #fff;
+    border-radius: $border-radius-base;
+    font-size: 1.3em;
+    padding: 1em;
+    text-align: center;
+}
+label .display-name { padding: 0em; font-size: 1.5em; }
+
 
 .rep-image { display: block; margin: auto; padding: 1em; border-radius: 50%; }
 
@@ -162,12 +169,15 @@ $size: 2em;
   }
 }
 
+.btn-group { display: block; }
+.btn-group.sort-links { display: inline-block; }
 
 @media only screen 
-  and (min-width: 800px) 
+  and (min-width: 1200px) 
   {
-  a.call { font-size: 1.4em; }
-
+      a.call { font-size: 1.4em; }
+      .display-name { margin-top: 40px; text-align: left; }
+      .display-name br { display: none; }
 }
 
 

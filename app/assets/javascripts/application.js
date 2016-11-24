@@ -22,10 +22,10 @@
 
 
 $(document).ready(function() {
-    console.log('foo');
+
     var input = document.getElementById('gmaps-input-address');
     var autocomplete = new google.maps.places.Autocomplete(input);
-    console.log('bar');
+
     $('#rep-chooser input[type=radio]').on('change', function() {
 	$(this).closest("form").submit();
     });

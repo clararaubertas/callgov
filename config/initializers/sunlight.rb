@@ -6,8 +6,6 @@ module Sunlight
   end
 
   class District
-
-
     def self.get_from_lat_long(latitude, longitude)
       url = construct_url("districts/locate", {:latitude => latitude, :longitude => longitude})
       districts = districts_from_url(url)
@@ -21,31 +19,22 @@ module Sunlight
       url = construct_url("districts/locate", {:zip => zipcode})
       districts_from_url(url)
     end
- def self.districts_from_url(url)
-
+    def self.districts_from_url(url)
       if (result = get_json_data(url))
-
         districts = []
         result["results"].each do |district|
           districts << District.new(district["state"], district["district"])
         end
-
         districts
-
       else  
         nil
       end # if response.class
-
     end
 
      def self.get(params)
-
       if (params[:latitude] and params[:longitude])
-
         get_from_lat_long(params[:latitude], params[:longitude])
-
       elsif (params[:address])
-
         # get the lat/long from Google
         coordinates = Geocoder.coordinates(params[:address])
         if coordinates
@@ -54,9 +43,9 @@ module Sunlight
       else
         nil # appropriate params not found
       end
-
     end
   end 
+
   class Legislator
 
     attr_accessor :first_name, :last_name, :phone, :website, :office, :chamber
@@ -76,12 +65,11 @@ module Sunlight
         "<img src='http://res.cloudinary.com/dm0czpc8q/image/facebook/c_thumb,e_improve,g_face,h_100,r_max,w_100/#{facebook_id}.png' class='rep-image #{party_name}' />".html_safe
       end
     end
-
     
     def display_name
       title = (chamber == 'senate') ? "Senator" : "Representative"
       my_district = (chamber == 'house') ? district : ""
-      "#{title}&nbsp;#{first_name}&nbsp;#{last_name} (#{party}&#8209;#{state}#{(chamber == 'house') ? "&nbsp;" : ""}#{district})".html_safe
+      "#{title}<br /> #{first_name} #{last_name}<br /> (#{party}-#{state}#{(chamber == 'house') ? " " : ""}#{district})".html_safe
     end
     
     def self.all_where(params)
