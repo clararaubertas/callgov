@@ -1,23 +1,28 @@
 <h2>Ready to Call</h2>
 <div class="well">
-  <img src="http://res.cloudinary.com/dm0czpc8q/image/facebook/c_thumb,e_improve,g_face,h_90,r_max,w_90/<%= representative.facebook_id %>.png" />
-  <%= representative.display_name %>
-</div>
-<div class='well'>
-  <p>  <a class="phone-number btn btn-primary" href="tel:<%= representative.phone %>"><%= representative.phone %></a></p>
-  <br />
-<div class='muted-text'>
+  <div class='row'>
+    <div class='col-xs-3'>
+      <img src="http://res.cloudinary.com/dm0czpc8q/image/facebook/c_thumb,e_improve,g_face,h_90,r_max,w_90/<%= representative.facebook_id %>.png" />
+    </div>
+    <div class='col-xs-9'>
+      <h4 class='mvm'><%= representative.display_name %></h4>
+    </div>
+    <div class='col-xs-12 mvm'>
+      <a class="phone-number btn btn-primary" href="tel:<%= representative.phone %>"><%= representative.phone %></a>
+        <div class='muted-text'>
     <small>Click to call if you're on a phone, or to use a program like Skype; otherwise, just pick up your phone and dial the number.</small>
-</div><br />
+	</div>
+    </div>
+    </div>
+  
+  <br />
   <div class='muted-text'><small>Once you're done, click below to record your call!</small></div>
-
+  <form>
+    <input type="hidden" name="rep_id" value="<%= representative.bioguide_id %>" />
+    <input type="hidden" name="address" value="<%= params[:address] %>" />
+    <input type="hidden" name="i_called" value="yes" />
+    <p class='mvm'>
+      <button type="submit" class="complete-call btn btn-primary btn-lg"><span class='glyphicon glyphicon-check' aria-hidden="true"></span> I did it!</button>
+    </p>
+  </form>
 </div>
-<form>
-  <input type="hidden" name="rep_id" value="<%= representative.bioguide_id %>" />
-  <input type="hidden" name="address" value="<%= params[:address] %>" />
-  <input type="hidden" name="i_called" value="yes" />
-  	<p>
-	  <button type="submit" class="btn btn-primary btn-lg"><span class='glyphicon glyphicon-check' aria-hidden="true"></span> I did it!</button>
-	</p>
-</form>
-

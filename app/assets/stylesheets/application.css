@@ -37,7 +37,8 @@ td a:hover { text-decoration: none; }
 }
 .navbar-brand .glyphicon { margin-top: -10px; }
 .btn-group input[type='radio'] { display: none; }
-.phone-number { margin-left: 1em; font-size: 2em; }
+.phone-number { font-size: 2em; width: 100%; }
+.complete-call { width: 100%; background: #ac0000;}
 
 a:link, a:hover, a:visited { font-weight: bold; }
 
