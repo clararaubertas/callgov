@@ -13,7 +13,7 @@
  *= require_tree .
  *= require jquery-ui
  *= require bootstrap-social
- *= require social-share-button
+ *= require awesome-share-buttons
  *= require font-awesome
  *= require bootstrap-variables
  *= require_self
@@ -113,6 +113,7 @@ body {
 .btn-republican:hover { background-color: darken($red, 10%); }
 .btn-republican.disabled { background-color: lighten($red, 10%);}
 .btn-republican,.btn-republican.disabled {  border-color: $red; }
+
 .display-name {
     color: #fff;
     border-radius: $border-radius-base;
@@ -120,9 +121,8 @@ body {
     padding: 1em;
     text-align: center;
 }
+
 label .display-name { padding: 0em; font-size: 1.5em; }
-
-
 .rep-image { display: block; margin: auto; padding: 1em; border-radius: 50%; }
 
 body {

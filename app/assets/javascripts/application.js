@@ -16,7 +16,7 @@
 //= require gmaps-auto-complete
 //= require smart_listing
 //= require bootstrap
-//= require social-share-button
+//= require awesome-share-buttons
 //= require_tree .
 
 

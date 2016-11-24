@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/evansobkowicz/awesome-share-buttons.git
+  revision: eadb9ba540732e4db156ead649dcb662f41e105a
+  specs:
+    awesome-share-buttons (1.1)
+      coffee-rails
+      sass-rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -215,9 +223,6 @@ GEM
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    shareable (1.1.4)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
     simplecov (0.12.0)
       docile (~> 1.1.0)
       json (>= 1.8, < 3)
@@ -228,9 +233,6 @@ GEM
       jquery-rails
       kaminari (~> 0.17)
       rails (>= 3.2)
-    social-share-button (0.8.5)
-      coffee-rails
-      sass-rails
     spring (2.0.0)
       activesupport (>= 4.2)
     sprockets (3.7.0)
@@ -267,6 +269,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-deprecated_finders
+  awesome-share-buttons!
   bootstrap-generators (~> 3.3.4)
   bootstrap-social-rails
   byebug
@@ -293,10 +296,8 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
-  shareable
   simplecov
   smart_listing
-  social-share-button
   spring
   sqlite3
   sunlight
