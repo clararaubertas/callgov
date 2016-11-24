@@ -16,8 +16,18 @@
 			      disabled <% end %>    ">
 		<input type="radio" class="form-check-input" value="<%= 
 								    rep.bioguide_id %>" name="rep_id">
-		<img src="http://res.cloudinary.com/dm0czpc8q/image/facebook/c_thumb,e_improve,g_face,h_90,r_max,w_90/<%= rep.facebook_id %>.png" />
-		<%= rep.display_name %>
+		<div class='row'>
+		  <div class='col-md-3 col-sm-12'>
+		<% if rep.facebook_id %>
+		  <img src="http://res.cloudinary.com/dm0czpc8q/image/facebook/c_thumb,e_improve,g_face,h_90,r_max,w_90/<%= rep.facebook_id %>.png" />
+		<% elsif rep.twitter_id %>
+		  <img src="http://res.cloudinary.com/dm0czpc8q/image/twitter/c_thumb,e_improve,g_face,h_90,r_max,w_90/<%= rep.twitter_id %>.png" />
+		<% end %>
+		  </div>
+		  <div class='col-md-9 col-sm-12'>
+		    <h4><%= rep.display_name %></h4>
+		  </div>
+		</div>
 	      </label>
 	    </div>
 	<% end %>
