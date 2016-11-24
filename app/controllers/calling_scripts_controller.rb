@@ -85,7 +85,7 @@ class CallingScriptsController < ApplicationController
         if Call.find(:all, conditions: { calling_script_id: @calling_script.id, user_id: (@id || @ip)}).size < 3
       find_representatives_from_location
     else
-      redirect_to calling_scripts_path
+      redirect_to scripts_path
     end
   end
   
