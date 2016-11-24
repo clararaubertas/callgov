@@ -17,6 +17,7 @@
 //= require smart_listing
 //= require turbolinks
 //= require bootstrap
+//= require social-share-button
 //= require_tree .
 
 

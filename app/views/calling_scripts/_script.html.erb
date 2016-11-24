@@ -10,8 +10,8 @@
   <% smart_listing.collection.each do |calling_script| %>
     <div class='row row-striped'>
       <div class='col-xs-7 mvm'>
-	<h3><%= link_to calling_script.topic, calling_script %></h3>
-	<%= link_to (simple_format calling_script.summary), calling_script %>
+	<h3><%= link_to calling_script.topic, script_path(calling_script) %></h3>
+	<%= link_to (simple_format calling_script.summary), script_path(calling_script) %>
 	<p><small class="text-muted"><%= calling_script.created_at.strftime("%B %e, %Y") %></small></p>
       </div>
       <div class='col-xs-5'>
@@ -32,14 +32,14 @@
 		    Called</span>
 		</div>
 	    <div class='col-sm-6'>
-              <%= link_to calling_script, class: 'btn btn-secondary' do %>
+              <%= link_to script_path(calling_script), class: 'btn btn-secondary' do %>
               <span class="glyphicon glyphicon-phone"></span>
               (call again)
 	    <% end %>
 	</div>
 	    </div>
         <% else %>
-          <%= link_to calling_script, class: 'btn btn-primary call' do %>
+          <%= link_to script_path(calling_script), class: 'btn btn-primary call' do %>
           <span class="glyphicon glyphicon-phone"></span>
           Call Now!
   <% end %>

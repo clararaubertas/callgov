@@ -3,6 +3,19 @@ class CallingScript < ActiveRecord::Base
   belongs_to :user
   has_many :calls
 
+  extend FriendlyId
+  friendly_id :slug_candidates, use: [:slugged, :finders] 
+
+  # Try building a slug based on the following fields in
+  # increasing order of specificity.
+  def slug_candidates
+    [
+      [:topic, :summary],
+      [:topic, :summary, :content]
+    ]
+  end
+  
+
   def called_yet?(calling_user, ip)
     Call.find_by_calling_script_id_and_user_id(id, (calling_user.try(:id) || ip)).present?
   end

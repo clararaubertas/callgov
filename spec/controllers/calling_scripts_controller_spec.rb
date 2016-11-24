@@ -105,7 +105,7 @@ RSpec.describe CallingScriptsController, type: :controller do
       
       it "redirects to the created calling_script" do
         post :create, calling_script: valid_attributes
-        expect(response).to redirect_to(CallingScript.last)
+        expect(response).to redirect_to(script_path(CallingScript.last))
       end
     end
 
@@ -161,7 +161,7 @@ RSpec.describe CallingScriptsController, type: :controller do
         calling_script = FactoryGirl.create(:calling_script)
         sign_in(calling_script.user)
         put :update,  id: calling_script.to_param, calling_script: valid_attributes
-        expect(response).to redirect_to(calling_script)
+        expect(response).to redirect_to(script_path(calling_script))
       end
     end
 
@@ -194,7 +194,7 @@ RSpec.describe CallingScriptsController, type: :controller do
       calling_script = FactoryGirl.create(:calling_script)
       sign_in(calling_script.user)
       delete :destroy, id: calling_script.to_param
-      expect(response).to redirect_to(calling_scripts_url)
+      expect(response).to redirect_to(scripts_url)
     end
   end
 

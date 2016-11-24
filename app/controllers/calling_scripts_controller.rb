@@ -38,7 +38,7 @@ class CallingScriptsController < ApplicationController
     @calling_script = CallingScript.new(calling_script_params)
     @calling_script.user = @current_user
     if @calling_script.save
-        redirect_to @calling_script, notice: 'Calling script was successfully created.' 
+        redirect_to script_path(@calling_script), notice: 'Calling script was successfully created.' 
     else
       render :new 
     end
@@ -47,7 +47,7 @@ class CallingScriptsController < ApplicationController
   # PATCH/PUT /calling_scripts/1
   def update
     if @calling_script.update(calling_script_params)
-      redirect_to @calling_script, notice: 'Calling script was successfully updated.' 
+      redirect_to script_path(@calling_script), notice: 'Calling script was successfully updated.' 
     else
       render :edit 
     end
@@ -57,7 +57,7 @@ class CallingScriptsController < ApplicationController
   # DELETE /calling_scripts/1.json
   def destroy
     @calling_script.destroy
-    redirect_to calling_scripts_url, notice: 'Calling script was successfully destroyed.' 
+    redirect_to scripts_path, notice: 'Calling script was successfully destroyed.' 
   end
 
   private

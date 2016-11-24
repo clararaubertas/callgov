@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(user)
-    new_calling_script_url
+    new_script_url
   end
 
 end

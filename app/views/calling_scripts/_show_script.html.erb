@@ -1,5 +1,9 @@
+
 <div class='jumbotron'>
+    <%= social_share_button_tag("Call your representatives about #{calling_script.topic}", :url => script_url(calling_script), :desc => calling_script.summary) %>
+
   <h2><%= calling_script.topic %></h2>
+
   <div class='well'>
     <%= simple_format calling_script.summary %>
   </div>
