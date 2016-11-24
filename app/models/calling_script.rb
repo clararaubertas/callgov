@@ -2,6 +2,9 @@ class CallingScript < ActiveRecord::Base
   validates_presence_of :content, :topic, :user, :summary
   belongs_to :user
   has_many :calls
+  delegate :profile, :to => :user, :prefix => true
+  delegate :picture, :to => :user, :prefix => true
+  delegate :provider, :to => :user, :prefix => true
 
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :finders] 

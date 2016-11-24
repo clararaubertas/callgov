@@ -11,7 +11,7 @@
 	  <% representatives.each do |rep| %>
 	    <div class="col-xs-12">
 	      <label class="form-check-label btn btn-primary btn-<%= rep.party_name %>
-			    <% if @calling_script.called_yet?(@current_user, @request.ip, rep.bioguide_id) %>disabled
+			    <% if calling_script.called_yet?(@current_user, @request.ip, rep.bioguide_id) %>disabled
 			    <% end %>">
 		<div class='row'>
 		  <div class="col-md-3 col-xs-12">

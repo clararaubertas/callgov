@@ -15,9 +15,9 @@
   <% end %>
   <p class='text-muted user-info'>
     <small>script by
-      <a href="<%= calling_script.user.profile %>">
-	<span class='fa fa-<%= calling_script.user.provider.gsub("_oauth2", "") %>'></span>
-	<img src="<%= calling_script.user.picture %>" height="30" width="30">
+      <a href="<%= calling_script.user_profile %>">
+	<span class='fa fa-<%= calling_script.user_provider.gsub("_oauth2", "") %>'></span>
+	<img src="<%= calling_script.user_picture %>" height="30" width="30">
       </a> &bull;
       	created <%= calling_script.created_at.strftime("%B %e, %Y") %>
     </small>

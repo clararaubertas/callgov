@@ -18,39 +18,34 @@ RSpec.feature "SignIns", type: :feature do
     
   end
 
-  let(:user) { create(:user) } 
+  let(:user) { create(:user) }
+
+  before(:each) do
+    visit '/'
+    expect(page).to have_no_content 'Logout'    
+  end
 
   scenario "can't authenticate" do
     OmniAuth.config.mock_auth[:twitter] = :nothing
-    visit '/'
-    expect(page).to have_no_content 'Logout'
     click_link 'Sign in with Twitter' # image/button: Sign in with Twitter
     expect(page).to have_content "Could not authenticate"
     expect(page).to have_no_content 'Logout'
   end
   
   scenario 'with valid email and password, Twitter' do
-    visit '/'
-    expect(page).to have_no_content 'Logout'
     click_link 'Sign in with Twitter' # image/button: Sign in with Twitter
     expect(page).to have_content 'Successfully authenticated from Twitter'
     expect(page).to have_content 'Logout'
   end
 
   scenario "with Google" do
-    visit '/'
-    expect(page).to have_no_content 'Logout'
     click_link 'Sign in with Google' # image/button: Sign in with Google
     expect(page).to have_content 'Successfully authenticated from Google'
-    
   end
 
   scenario "with Facebook" do
-    visit '/'
-    expect(page).to have_no_content 'Sign Out'
     click_link 'Sign in with Facebook' # image/button: Sign in with LinkedIn
     expect(page).to have_content 'Successfully authenticated from Facebook'
-    
   end
   
 end

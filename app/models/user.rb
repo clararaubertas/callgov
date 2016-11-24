@@ -8,11 +8,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook, :twitter, :google_oauth2]
 
   def self.from_omniauth(auth)
-  where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+    provider = auth.provider
+  where(provider: provider, uid: auth.uid).first_or_create do |user|
     user.email = auth.info.email
     user.password = Devise.friendly_token[0,20]
-    user.picture = auth.info.image
-    user.set_image_and_profile(auth.provider, auth)
+    user.set_image_and_profile(provider, auth)
   end
   end
 
@@ -20,16 +20,28 @@ class User < ActiveRecord::Base
     uid = auth.uid
     self.picture = "http://res.cloudinary.com/dm0czpc8q/image/gplus/c_thumb,e_improve,g_face,h_90,r_max,w_90/#{uid}.png"
     if provider == 'facebook'
-      self.profile = "http://facebook.com/#{uid}"
+      set_facebook_profile(uid)
     elsif provider == 'twitter'
-      self.profile = auth.info.try(:urls).try(:Twitter)
+      set_twitter_profile(auth)
     elsif provider == 'google_oauth2'
-      url = "https://plus.google.com/#{uid}"
-      response = Net::HTTP.get_response(URI.parse(url))
-      if (response.code == '200')  || (response.code == '302')
-        self.profile = url
-      end
+      set_google_profile(uid)
     end
+  end
+
+  def set_facebook_profile(uid)
+    self.profile = "http://facebook.com/#{uid}"
+  end
+
+  def set_google_profile(uid)
+    url = "https://plus.google.com/#{uid}"
+    response = Net::HTTP.get_response(URI.parse(url)).code
+    if (response == '200')  || (response == '302')
+      self.profile = url
+    end
+  end
+
+  def set_twitter_profile(auth)
+    self.profile = auth.info.try(:urls).try(:Twitter)
   end
   
 end
