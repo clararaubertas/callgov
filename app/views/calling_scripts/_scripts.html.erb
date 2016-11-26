@@ -8,7 +8,7 @@
 
 <div id="script-list">
   <% smart_listing.collection.each do |calling_script| %>
-    <%= render 'script', :calling_script => calling_script, :uid => uid %>
+    <%= render 'script', :calling_script => calling_script, :uid => @uid %>
   <% end %>
 </div>
 

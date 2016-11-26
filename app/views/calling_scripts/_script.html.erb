@@ -27,7 +27,8 @@
 
       <div class='col-sm-7 mvm'>
         <% if calling_script.called_from_this_script?(uid) %>
-	  <%= render 'buttons/called' %>
+	  <%= render 'calling_scripts/buttons/called',
+:calling_script => calling_script %>
         <% else %>
 	  <a href="<%= script_path(calling_script) %>"
 	     class="btn btn-primary call"
