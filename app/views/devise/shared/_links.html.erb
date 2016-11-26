@@ -1,20 +1,21 @@
-	    <li><%= link_to user_facebook_omniauth_authorize_path, :class => 'btn-facebook btn' do %>
-	      <i class='fa fa-facebook'>
-	      </i>
-	      Sign in with Facebook
-	  <% end %>
-</li>
-<li><%= link_to user_google_oauth2_omniauth_authorize_path, :class => 'btn-google btn' do %>
-  <i class='fa fa-google'>
+<div class='btn-group' aria-label="Log in">
+  <%= link_to user_facebook_omniauth_authorize_path, :class => 'btn-facebook btn' do %>
+  <i class='fa fa-facebook'>
   </i>
-  Sign in with Google
-  <% end %>
-</li>
-<li><%= link_to  user_twitter_omniauth_authorize_path, :class => 'btn-twitter btn' do %>
-  <i class='fa fa-twitter'>
-  </i>
-  Sign in with Twitter
-  <% end %>
+  Sign in with Facebook
+<% end %>
+
+<%= link_to user_google_oauth2_omniauth_authorize_path, :class => 'btn-google btn' do %>
+<i class='fa fa-google'>
+</i>
+Sign in with Google
+<% end %>
+
+<%= link_to  user_twitter_omniauth_authorize_path, :class => 'btn-twitter btn' do %>
+<i class='fa fa-twitter'>
+</i>
+Sign in with Twitter
+<% end %>
 
 
-</li>
+

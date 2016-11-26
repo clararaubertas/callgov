@@ -31,6 +31,10 @@ td a:hover { text-decoration: none; }
     color: #fff;
 }
 
+.sort-links { float: right; }
+#script-list { clear: both; }
+
+
 .navbar-inverse .btn { padding: 5px; margin-top: 20px; margin-bottom: 20px; margin-left: 5px; margin-right: 5px;}
 .navbar-inverse .btn-twitter, .navbar-inverse .btn-facebook, .navbar-inverse .btn-google { font-size: .8em; }
 
@@ -129,6 +133,7 @@ label .display-name { padding: 0em; font-size: 1.5em; }
 body {
   padding-top: $navbar-height + 10px;
 }
+.navbar-right .btn-group { padding-top: 3px; }
 
 .page-header {
   a.btn {
@@ -170,8 +175,8 @@ $size: 2em;
   }
 }
 
-.btn-group { display: block; }
-.btn-group.sort-links { display: inline-block; }
+
+.sort-links { display: inline-block; }
 
 @media only screen 
   and (min-width: 1200px) 
