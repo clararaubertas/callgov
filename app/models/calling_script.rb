@@ -1,4 +1,6 @@
 class CallingScript < ActiveRecord::Base
+  include PgSearch
+  pg_search_scope :search_by_full_text, :against => [:content, :topic, :summary]
   validates_presence_of :content, :topic, :user, :summary
   belongs_to :user
   has_many :calls

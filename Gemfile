@@ -33,10 +33,10 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
   gem 'simplecov'
   gem 'factory_girl_rails'
   gem 'capybara'
+  gem 'faker'
 end
 
 group :development do
@@ -47,11 +47,8 @@ group :development do
   gem 'spring'
 end
 
-group :production do
-  gem 'pg'
-end
 
-
+gem 'pg'
 gem 'bootstrap-generators', '~> 3.3.4'
 gem 'sunlight'
 gem 'rspec-rails'
@@ -71,4 +68,5 @@ gem 'activerecord-deprecated_finders', require: 'active_record/deprecated_finder
 gem 'smart_listing'
 gem 'redcarpet'
 gem 'friendly_id'
-gem 'awesome-share-buttons', github: 'evansobkowicz/awesome-share-buttons'
+gem 'awesome-share-buttons', git: 'https://github.com/evansobkowicz/awesome-share-buttons.git'
+gem 'pg_search'

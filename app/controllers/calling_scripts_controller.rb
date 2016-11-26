@@ -7,7 +7,15 @@ class CallingScriptsController < ApplicationController
 
   # GET /calling_scripts
   def index
-    @calling_scripts = smart_listing_create(:calling_scripts, CallingScript.all, partial: "calling_scripts/script", default_sort: {calls_count: "desc"})
+    if params[:search]
+      script_scope = CallingScript.search_by_full_text(params[:search])
+    else
+      script_scope = CallingScript.all
+    end
+    @calling_scripts = smart_listing_create(:calling_scripts, script_scope, partial: "calling_scripts/script", default_sort: {calls_count: "desc"})
+    if @calling_scripts.empty?
+      flash[:error] = "No scripts found."
+    end
     @request = request
   end
 

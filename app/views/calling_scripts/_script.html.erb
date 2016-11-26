@@ -1,12 +1,12 @@
-<% if smart_listing.empty? %>
-  <p class='warning'>No scripts found!</p>
-<% else %>
-  <div class='btn-group sort-links mvm' role='group'bb aria-label="Sort scripts">
+<% unless smart_listing.empty? %>
+<div class='btn-group sort-links mvm' role='group'bb aria-label="Sort scripts">
     <%= smart_listing.sortable "Number of Calls", :calls_count %>
     <%= smart_listing.sortable "Topic", :topic %>
     <%= smart_listing.sortable "Date", :created_at, :class => 'btn' %>
-  </div>
-  <div id="script-list">
+</div>
+<% end %>
+
+<div id="script-list">
   <% smart_listing.collection.each do |calling_script| %>
     <div class='row row-striped'>
       <div class='col-xs-7 mvm'>
@@ -26,7 +26,7 @@
 	  </div>
 	  <div class='col-sm-7 mvm'>
             <% if calling_script.called_yet?(current_user, @request.remote_ip) %>
-		<div class='row'>
+		<Div class='row'>
 		<div class='col-sm-12 col-md-4'>
 		  <span class='label label-default'><span class="glyphicon glyphicon-check"></span>
 		    Called</span>
@@ -52,4 +52,4 @@
 <% end %>
 </div>
 <%= smart_listing.paginate %>
-<% end %>
+

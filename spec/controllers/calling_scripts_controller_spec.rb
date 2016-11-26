@@ -34,13 +34,17 @@ RSpec.describe CallingScriptsController, type: :controller do
   # in order to pass any filters (e.g. authentication) defined in
   # CallingScriptsController. Be sure to keep this updated too.
 
-  
-
   describe "GET #index" do
-    it "assigns all calling_scripts as @calling_scripts" do 
-     calling_script = FactoryGirl.create(:calling_script)
+    before(:each) do 
+      3.times { FactoryGirl.create(:calling_script) }
+    end
+    it "assigns all calling_scripts as @calling_scripts" do
       get :index, params: {}
-      expect(assigns(:calling_scripts)).to eq([calling_script])
+      expect(assigns(:calling_scripts).size).to eq 3
+    end
+    it "finds scripts by search" do
+      get :index, :search => CallingScript.first.topic.split.first 
+      expect(assigns(:calling_scripts).size).to eq 1
     end
   end
 
