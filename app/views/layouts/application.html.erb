@@ -1,36 +1,41 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="a simple tool for calling your senators and representatives in congress">
-  <meta name="author" content="">
-<title>CallGov.us: a simple tool for calling your senators and representatives in congress</title>
-<%= favicon_link_tag 'favicon.ico' %>
-  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!--[if lt IE 9]>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="a simple tool for calling your senators and representatives in congress">
+    <meta name="author" content="">
+    <title>
+      CallGov.us: a simple tool for calling your senators and representatives in congress
+    </title>
+    <%= favicon_link_tag 'favicon.ico' %>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
     <%= javascript_include_tag "https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js", "https://oss.maxcdn.com/respond/1.4.2/respond.min.js" %>
     <![endif]-->
-  <link href="https://fonts.googleapis.com/css?family=Bitter|Open+Sans" rel="stylesheet">
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBBP1zFeLppHX8MdMfDxB0CD4NUYHo7QMQ"></script>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <%= render :partial => 'layouts/navbar' %>
-  <div class="container">
-    <h1 class='title'>Call Your Senators and Representatives in Congress</h1>
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, class: "alert alert-#{ name == 'error' ? "danger" : "success" } alert-dismissable", role: "alert" do %>
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <%= msg %>
-    <% end %>
-    <% end %>
-<hr />
-<%= yield %>
-</div>
-<%= render :partial => 'layouts/footer' %>
-</body>
+       <link href="https://fonts.googleapis.com/css?family=Bitter|Open+Sans" rel="stylesheet">
+       <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBBP1zFeLppHX8MdMfDxB0CD4NUYHo7QMQ"></script>
+       <%= stylesheet_link_tag    'application', media: 'all' %>
+       <%= javascript_include_tag 'application' %>
+       <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= render :partial => 'layouts/navbar' %>
+    <div class="container">
+      <h1 class='title'>Call Your Senators and Representatives in Congress</h1>
+      <% flash.each do |name, msg| %>
+	<div class='alert alert-<%= name == 'error' ? "danger" : "success" %> alert-dismissable' role="alert">
+	  <button type="button" class="close" data-dismiss="alert">
+	    <span aria-hidden="true">&times;</span>
+	    <span class="sr-only">Close</span>
+	  </button>
+	  <%= msg %>
+	</div>
+      <% end %>
+      <hr />
+      <%= yield %>
+    </div>
+    <%= render :partial => 'layouts/footer' %>
+  </body>
 </html>
