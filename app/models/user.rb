@@ -11,7 +11,8 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth)
     provider = auth.provider
-    where(provider: provider, uid: auth.uid).first_or_create do |user|
+    where(uid: auth.uid).first_or_create do |user|
+      user.provider = provider
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
       user.set_image_and_profile(provider, auth)
