@@ -1,14 +1,22 @@
 <div class='row'>
   <div class='col-sm-6'>
     <% if @representative %>
-      <%= render :partial => 'calling_info', :locals => {:representative => @representative, :calling_script => @calling_script } %>
+      <%= render 'calling_info',
+:representative => @representative,
+:calling_script => @calling_script  %>
     <% elsif @representatives && !(@representatives.empty?) %>
-      <%= render :partial => 'rep_chooser', :locals => {:representatives => @representatives, :calling_script => @calling_script } %>
+      <%= render 'rep_chooser',
+:representatives => @representatives,
+:calling_script => @calling_script, :uid => @uid  %>
     <% else %>
-      <%= render :partial => 'user_locator', :locals => {:calling_script => @calling_script } %>
+      <%= render 'user_locator',
+:calling_script => @calling_script  %>
     <% end %>
   </div>
+  
   <div class='col-sm-6'>
-    <%= render :partial => 'show_script', :locals => { :calling_script => @calling_script } %>
+    <%= render 'show_script',
+:calling_script => @calling_script, :markdown => @markdown %> 
   </div>
+
 </div>

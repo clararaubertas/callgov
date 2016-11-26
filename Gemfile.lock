@@ -72,7 +72,11 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.10.0)
+    colorize (0.8.1)
     concurrent-ruby (1.0.2)
+    css_parser (1.2.6)
+      addressable
+      rdoc
     debug_inspector (0.0.2)
     devise (4.2.0)
       bcrypt (~> 3.0)
@@ -103,6 +107,11 @@ GEM
     gmaps-autocomplete-rails (0.2.0)
       rails (>= 3.1.0)
     hashie (3.4.6)
+    headhunter (0.1.9)
+      colorize
+      css_parser (>= 1.2.6)
+      nokogiri
+      rails
     i18n (0.7.0)
     jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
@@ -288,6 +297,7 @@ DEPENDENCIES
   friendly_id
   geocoder
   gmaps-autocomplete-rails
+  headhunter
   jbuilder (~> 2.0)
   jquery-rails
   jquery-ui-rails

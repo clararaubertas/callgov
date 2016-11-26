@@ -4,7 +4,8 @@ class Call < ActiveRecord::Base
   validates_presence_of :rep_id
   
   def rep
-    Sunlight::Legislator.all_where(:bioguide_id => rep_id).first
+    Legislator.all_where(:bioguide_id => rep_id).first
   end
 
+  
 end

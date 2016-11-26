@@ -1,8 +1,8 @@
-
-  <%= awesome_share_buttons(calling_script.summary, :url => script_url(calling_script)) %>
+<%= awesome_share_buttons(
+  calling_script.summary,
+  :url => script_url(calling_script)) %>
 <div class='jumbotron'>
   <h2><%= calling_script.topic %></h2>
-
   <div class='well'>
     <%= simple_format calling_script.summary %>
   </div>
@@ -10,13 +10,15 @@
   <% if calling_script.notes? %>
     <div class='well'>
       <h3>Notes:</h3>
-      <%= @markdown.render(calling_script.notes).html_safe %>
+      <%= markdown.render(calling_script.notes).html_safe %>
     </div>
   <% end %>
   <p class='text-muted user-info'>
     <small>script by
       <a href="<%= calling_script.user_profile %>">
-	<span class='fa fa-<%= calling_script.user_provider.gsub("_oauth2", "") %>'></span>
+	<span
+	   class='fa fa-<%= calling_script.user_provider.gsub("_oauth2", "") %>'>
+	</span>
 	<img src="<%= calling_script.user_picture %>" height="30" width="30">
       </a> &bull;
       	created <%= calling_script.created_at.strftime("%B %e, %Y") %>

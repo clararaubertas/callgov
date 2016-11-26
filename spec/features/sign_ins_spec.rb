@@ -5,17 +5,18 @@ RSpec.feature "SignIns", type: :feature do
 
   before do
     hash =  OmniAuth::AuthHash.new({
-  :provider => 'twitter',
-  :uid => '123545',
-  :info => {:name => "Jane Doe", :email => "jane@example.com" }
-                                                                 }  )
+                                     :provider => 'twitter',
+                                     :uid => '123545',
+                                     :info => {
+                                       :name => "Jane Doe",
+                                       :email => "jane@example.com"
+                                     }})
     OmniAuth.config.mock_auth[:twitter] = hash
     OmniAuth.config.mock_auth[:facebook] = hash
     OmniAuth.config.mock_auth[:google_oauth2] = hash
-
-    Rails.application.env_config["devise.mapping"] = Devise.mappings[:user] # If using Devise
-    Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter]
-    
+    Rails.application.env_config["devise.mapping"] = Devise.mappings[:user]
+    Rails.application.env_config["omniauth.auth"] =
+      OmniAuth.config.mock_auth[:twitter]
   end
 
   let(:user) { create(:user) }

@@ -10,17 +10,26 @@
 	<div class="form-check">
 	  <% representatives.each do |rep| %>
 	    <div class="col-xs-12">
-	      <label class="form-check-label btn btn-primary btn-<%= rep.party_name %>
-			    <% if calling_script.called_yet?(@current_user, @request.ip, rep.bioguide_id) %>disabled
-			    <% end %>">
+	      <label
+		 class="form-check-label 
+			btn btn-primary btn-<%= rep.party_name %>
+			    <% if 
+    calling_script.called_this_rep?(
+    uid, 
+    rep.bioguide_id) %>
+			      disabled
+			    <% end %>
+			    ">
 		<div class='row'>
 		  <div class="col-md-3 col-xs-12">
 		    <%= rep.display_image %>
 		  </div>
 		  <div class="col-md-9 col-xs-12">
 		    <p class="display-name"><%= rep.display_name %></p>
-		    <input type="radio" class="form-check-input" value="<%= 
-									rep.bioguide_id %>" name="rep_id">
+		    <input type="radio"
+			   class="form-check-input"
+			   value="<%= rep.bioguide_id %>"
+			   name="rep_id">
 		  </div>
 		</div>
 	      </label>
