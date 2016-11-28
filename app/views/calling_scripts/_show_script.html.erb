@@ -8,7 +8,7 @@
   </div>
   <%= simple_format calling_script.content %>
   <% if calling_script.notes? %>
-    <div class='well'>
+    <div class='well notes'>
       <h3>Notes:</h3>
       <%= markdown.render(calling_script.notes).html_safe %>
     </div>
