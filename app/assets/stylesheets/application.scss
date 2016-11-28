@@ -99,7 +99,8 @@ body {
 .sort-links .btn-secondary { border: 1px solid #002566; }
 
 .well p { margin-bottom: 0; }
-.well.notes { font-size: .9em; overflow: scroll; }
+.well.notes { overflow: scroll; }
+.jumbotron .notes { font-size: .9em; }
 
 .user-info a:hover { text-decoration: none; }
 
