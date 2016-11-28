@@ -71,3 +71,9 @@ gem 'redcarpet'
 gem 'friendly_id'
 gem 'awesome-share-buttons', git: 'https://github.com/evansobkowicz/awesome-share-buttons.git'
 gem 'pg_search'
+
+# Until the new API calls are generally available, you must manually specify my fork
+# of the Heroku API gem:
+gem 'platform-api', github: 'jalada/platform-api', branch: 'master'
+
+gem 'letsencrypt-rails-heroku', group: 'production'
