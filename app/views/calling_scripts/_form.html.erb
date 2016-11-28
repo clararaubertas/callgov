@@ -1,4 +1,7 @@
-<%= form_for(calling_script, url: scripts_path, html: { class: "form-horizontal", role: "form" }) do |f| %>
+<%= form_for(calling_script,
+  url:
+  calling_script.persisted? ? script_path(calling_script) : scripts_path,
+  html: { class: "form-horizontal", role: "form" }) do |f| %>
 
   <% if calling_script.errors.any? %>
     <div class="alert alert-danger alert-dismissable" role="alert">
