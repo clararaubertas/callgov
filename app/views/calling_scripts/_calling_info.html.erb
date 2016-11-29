@@ -3,7 +3,7 @@
     <h2>Ready to Call</h2>
   </div>
   <div class='col-md-6 col-xs-12'>
-    <form>
+    <form id="record_call">
       <input type="hidden" name="rep_id" value="<%= representative.bioguide_id %>" />
       <input type="hidden" name="address" value="<%= params[:address] %>" />
       <input type="hidden" name="i_called" value="yes" />
@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class='col-xs-12 mvm'>
-      <a class="phone-number btn btn-primary" href="tel:<%= representative.phone %>"><%= representative.phone %></a>
+      <span class="phone-number btn btn-primary" id="rep-phone"><%= representative.phone %></span>
       <div class='muted-text'>
 	<small>Click to call if you're on a phone, or to use a program like Skype; otherwise, just pick up your phone and dial the number. Then click "I called!" above to record your call.</small>
       </div>

@@ -29,5 +29,16 @@ $(document).ready(function() {
     $('#rep-chooser input[type=radio]').on('change', function() {
 	$(this).closest("form").submit();
     });
+
+    $('#rep-phone').on('click', function() {
+	var values = $('#record_call').serialize();
+	$.ajax({
+	    type: "GET",
+	    url: location.href,
+	    data: values+'&'+$.param({ 'i_called': 'yes' })
+	});
+	window.location = "tel:" + $(this).text();
+    });
+    
 });
 
