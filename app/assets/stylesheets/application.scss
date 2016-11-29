@@ -95,7 +95,7 @@ body {
 
 #script-list .label { padding: 1em; }
 #script-list { padding-bottom: 2em; }
-.call-numbers .badge { background: #fff; color: #ac0000; }
+.call-numbers .badge { background: #ac0000; color: #fff; }
 .sort-links .btn-secondary { border: 1px solid #002566; }
 
 .well p { margin-bottom: 0; }
@@ -183,9 +183,9 @@ $size: 2em;
 @media only screen 
   and (min-width: 1200px) 
   {
-      a.call { font-size: 1.4em; }
+      a.call { font-size: 2em; }
+      .call-numbers .badge { font-size: 2em; }
       .display-name { margin-top: 40px; text-align: left; }
       .display-name br { display: none; }
 }
-
 
