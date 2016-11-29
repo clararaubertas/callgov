@@ -28,7 +28,7 @@
     </small>
   </p>
   <% if current_user == calling_script.user %>
-    <%= link_to scripts_path(@calling_script), class: 'btn btn-primary' do %>
+    <%= link_to edit_script_path(@calling_script), class: 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-edit"></span>
     Edit
   <% end %>
