@@ -23,6 +23,5 @@ module CallingCongress
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
     config.active_record_schema_format = :sql
-    config.force_ssl = true
   end
 end

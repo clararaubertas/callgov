@@ -20,9 +20,19 @@
 	   class='fa fa-<%= calling_script.user_provider.gsub("_oauth2", "") %>'>
 	</span>
 	<img src="<%= calling_script.user_picture %>" height="30" width="30">
-      </a> &bull;
-      	created <%= calling_script.created_at.strftime("%B %e, %Y") %>
+      </a>
+  </p>
+  <p class='text-muted user-info'>
+    <small>
+      created <%= calling_script.created_at.strftime("%B %e, %Y") %>
     </small>
   </p>
+  <% if current_user == calling_script.user %>
+    <%= link_to scripts_path(@calling_script), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-edit"></span>
+    Edit
+  <% end %>
+  <% end %>
+  <p>
 </div>
 
