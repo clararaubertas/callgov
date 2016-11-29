@@ -56,6 +56,8 @@ class User < ActiveRecord::Base
       adjusted_uid = auth.try(:info).try(:nickname)
     elsif provider == 'google_oauth2'
       adjusted_uid = auth.try(:info).try(:image)
+    else
+      adjusted_uid = uid
     end
     self.picture =
       "#{image_host}#{image_provider}/#{image_params}/#{adjusted_uid}.png"    
