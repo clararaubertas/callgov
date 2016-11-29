@@ -6,7 +6,8 @@ google_hash = OmniAuth::AuthHash.new({
                                        :uid => '110031535020051778989',
                                        :info => {
                                          :email => "user2@example.com",
-                                         :name => "Barack Obama"
+                                         :name => "Barack Obama",
+                                         :image => "https://lh3.googleusercontent.com/-2lJYGtfXKwQ/AAAAAAAAAAI/AAAAAAAB2HQ/QSmIw0nQN_c/s36-p-k-rw-no/photo.jpg"
                                        }}
                                     )
 

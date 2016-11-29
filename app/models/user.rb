@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   def self.translate_provider_for_image(provider)
     case provider
     when "google_oauth2"
-      "gplus"
+      "fetch"
     when "twitter"
       "twitter_name"
     else
@@ -52,7 +52,11 @@ class User < ActiveRecord::Base
     image_host = "http://res.cloudinary.com/dm0czpc8q/image/"
     image_params = "c_thumb,e_improve,g_face,h_90,r_max,w_90"
     image_provider = User.translate_provider_for_image(provider)
-    adjusted_uid = (provider == 'twitter' ? auth.try(:info).try(:nickname) : uid)
+    if provider == 'twitter'
+      adjusted_uid = auth.try(:info).try(:nickname)
+    elsif provider == 'google_oauth2'
+      adjusted_uid = auth.try(:info).try(:image)
+    end
     self.picture =
       "#{image_host}#{image_provider}/#{image_params}/#{adjusted_uid}.png"    
   end
