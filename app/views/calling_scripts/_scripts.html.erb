@@ -1,5 +1,11 @@
+<div class='share-buttons'>
+<%= awesome_share_buttons(
+  "Call your representatives in Congress with this easy tool! Create scripts and calls-to-action, track your calls, and share with friends.",
+  :url => "http://callgov.us") %>
+</div>
+
 <% unless smart_listing.empty? %>
-  <div class='btn-group sort-links mvm' role='group' aria-label="Sort scripts">
+  <div class='btn-group sort-links' role='group' aria-label="Sort scripts">
     <%= smart_listing.sortable "Number of Calls", :calls_count %>
     <%= smart_listing.sortable "Topic", :topic %>
     <%= smart_listing.sortable "Date", :created_at, :class => 'btn' %>

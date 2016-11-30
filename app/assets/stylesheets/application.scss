@@ -31,7 +31,7 @@ td a:hover { text-decoration: none; }
     color: #fff;
 }
 
-.sort-links { float: right; }
+.sort-links { float: right; margin-top: 3em; margin-bottom: .5em; }
 #script-list { clear: both; }
 
 
@@ -63,6 +63,9 @@ h1.title { font-size: 2.6em; }
 .row-striped:nth-of-type(even){
     background-color: $light-blue;
 }
+
+.share-buttons { margin-top: 2em; float: left; }
+
 
 /*margin vertical medium (eventually we can add more of these)*/
 .mvm {
