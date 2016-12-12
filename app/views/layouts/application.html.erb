@@ -22,7 +22,8 @@
   <body>
     <%= render :partial => 'layouts/navbar' %>
     <div class="container">
-      <h1 class='title'>Call Your Senators and Representatives in Congress</h1>
+
+
       <% flash.each do |name, msg| %>
 	<div class='alert alert-<%= name == 'error' ? "danger" : "success" %> alert-dismissable' role="alert">
 	  <button type="button" class="close" data-dismiss="alert">

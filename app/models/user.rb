@@ -31,7 +31,8 @@ class User < ActiveRecord::Base
   
   def set_image_and_profile(provider, auth)
     uid = auth.uid
-    set_image(provider, uid, auth)
+    image_provider = User.translate_provider_for_image(provider)
+    set_image(image_provider, uid, auth)
     set_profile(provider, auth.info, uid)
   end
 
@@ -51,16 +52,16 @@ class User < ActiveRecord::Base
   def set_image(provider, uid, auth)
     image_host = "http://res.cloudinary.com/dm0czpc8q/image/"
     image_params = "c_thumb,e_improve,g_face,h_90,r_max,w_90"
-    image_provider = User.translate_provider_for_image(provider)
-    if provider == 'twitter'
-      adjusted_uid = auth.try(:info).try(:nickname)
-    elsif provider == 'google_oauth2'
-      adjusted_uid = auth.try(:info).try(:image)
+    info = auth.try(:info)
+    if provider == 'twitter_name'
+      adjusted_uid = info.try(:nickname)
+    elsif provider == 'fetch'
+      adjusted_uid = info.try(:image)
     else
       adjusted_uid = uid
     end
     self.picture =
-      "#{image_host}#{image_provider}/#{image_params}/#{adjusted_uid}.png"    
+      "#{image_host}#{provider}/#{image_params}/#{adjusted_uid}.png"    
   end
 
   def set_facebook_profile(uid)

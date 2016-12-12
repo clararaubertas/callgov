@@ -7,9 +7,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="/" class="navbar-brand">
+      <a href="/" class="navbar-brand hidden-lg hidden-md">
 	<%= fa_icon 'phone-square' %>
         CallGov.us
+      </a>
+      <a href="/">
+	<%= image_tag 'callgov.png', :alt => 'callgov.us', :class => 'mvm hidden-sm hidden-xs' %>
       </a>
     </div>
 
@@ -24,10 +27,11 @@
         <% if user_signed_in? %>
           <li>
             <span class='logged-in-user'>Signed in as <%= current_user.email %>     <img src="<%= current_user.picture %>" width="30" height="30" />
+	      You've made
               <div class='badge'>
                 <%= current_user.calls.size %>
               </div>
-              calls
+              calls so far&mdash;keep it up!
             </span>
           </li>
           <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
@@ -35,8 +39,11 @@
           <li><%= render :partial => 'devise/shared/links' %></li>
         <% end %>
       </ul>
+
+      	<h1 class='title'>Call Your Senators and Representatives in Congress</h1>
+
     </div>
   </div>
 </nav>
-
+<p class='clearing'>&nbsp;</p>
 

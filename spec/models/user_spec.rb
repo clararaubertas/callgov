@@ -11,6 +11,19 @@ google_hash = OmniAuth::AuthHash.new({
                                        }}
                                     )
 
+
+twitter_hash = OmniAuth::AuthHash.new({
+                                       :provider => 'twitter',
+                                       :uid => 'clararaubertas',
+                                       :info => {
+                                         :email => "user2@example.com",
+                                         :name => "Barack Obama"
+
+                                       }}
+                                    )
+
+
+
 facebook_hash = OmniAuth::AuthHash.new ({
                                           :provider => "facebook", 
                                           :uid => 1234, :info => {
@@ -39,6 +52,11 @@ RSpec.describe User, type: :model do
 
   it "creates a picture" do
     omniauth_user = User.from_omniauth(google_hash)
+    expect(omniauth_user.picture).to be_present
+  end
+
+  it "creates with twitter" do
+    omniauth_user = User.from_omniauth(twitter_hash)
     expect(omniauth_user.picture).to be_present
   end
 
