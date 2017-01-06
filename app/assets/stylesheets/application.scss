@@ -23,7 +23,7 @@
 
 #rep-chooser .form-check-label { text-align: left; margin-bottom: 1em;  width: 100%; }
 
-.logged-in-user { color: #fff; padding-top: 21px; padding-bottom: 20px; display: block; position: relative; font-weight: bold; }
+.logged-in-user { color: #fff; padding-top: 11px; padding-bottom: 10px; display: block; position: relative; font-weight: bold; }
 
 td a:hover { text-decoration: none; }
 
@@ -68,7 +68,7 @@ h1 a.navbar-brand {
     1px -1px 0 #002566,
     -1px 1px 0 #002566,
 }
-h1 a.navbar-brand .fa { opacity: .5; margin-right: 20px; margin-left: 20px; font-size: 65px; color: $dark-blue; text-shadow: none;  }
+h1 a.navbar-brand .fa { opacity: .8; margin-right: 20px; margin-left: 20px; font-size: 65px; color: $dark-blue; text-shadow: none;  }
 h1 a.navbar-brand:hover {
     color: $light-blue;
 }
