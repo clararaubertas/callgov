@@ -40,7 +40,7 @@ td a:hover { text-decoration: none; }
 
 .navbar-inverse .navbar-brand {
     font-weight: bold;
-    color: $dark-blue;
+    color: #fff;
 }
 .navbar-brand .glyphicon { margin-top: -10px; }
 
@@ -68,7 +68,7 @@ h1 a.navbar-brand {
     1px -1px 0 #002566,
     -1px 1px 0 #002566,
 }
-h1 a.navbar-brand .fa { color: $dark-blue; }
+
 h1 a.navbar-brand:hover {
     text-shadow:
     -1px -1px 0 #000,  
