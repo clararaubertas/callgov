@@ -53,7 +53,12 @@ body { font-family: 'Open Sans', sans-serif; }
 
 h1 { margin: 0; padding: 0; }
 h1.title { font-size: 2em; color: #fff; float: right; padding: 0; margin-top: .1em; }
-h1 a { font-size: 1.5em; position: absolute; top: 10px; left: 10px;
+h1 a.navbar-brand {
+    font-size: 1.5em;
+    position: absolute;
+    left: .5em;
+    bottom: .5em;
+    margin: 0; padding: 0;
        color: $dark-blue;
        text-shadow:
        3px 3px 0 #fff,
