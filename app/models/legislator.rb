@@ -13,7 +13,7 @@ class Legislator < Sunlight::Legislator
   end
   
   def display_image
-    image_host = "http://res.cloudinary.com/dm0czpc8q/image/"
+    image_host = "https://res.cloudinary.com/dm0czpc8q/image/"
     image_params = "c_thumb,e_improve,g_face,h_90,r_max,w_90"
     if twitter_id
       url = "#{image_host}twitter_name/#{image_params}/#{twitter_id}.png"    

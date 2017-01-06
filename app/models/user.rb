@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
   end
 
   def set_image(provider, uid, auth)
-    image_host = "http://res.cloudinary.com/dm0czpc8q/image/"
+    image_host = "https://res.cloudinary.com/dm0czpc8q/image/"
     image_params = "c_thumb,e_improve,g_face,h_90,r_max,w_90"
     info = auth.try(:info)
     if provider == 'twitter_name'
