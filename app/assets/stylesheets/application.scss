@@ -59,12 +59,24 @@ h1 a.navbar-brand {
     font-size: 1.5em;
     position: absolute;
     left: .5em;
-    bottom: .5em;
+    bottom: 0em;
     margin: 0; padding: 0;
     color: #fff;
-    text-shadow: 3px 3px 0 #002566, -1px -1px 0 #002566, 1px -1px 0 #002566, -1px 1px 0 #002566, 1px 1px 0 #00256;
+    text-shadow:
+    3px 3px 0 #002566,
+    -1px -1px 0 #002566,
+    1px -1px 0 #002566,
+    -1px 1px 0 #002566,
+    1px 1px 0 #00256;
 }
 h1 a.navbar-brand .fa { color: $dark-blue; }
+h1 a.navbar-brand:hover {
+    text-shadow:
+    -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000;
+}
 
 h1 { position: relative; }
 
