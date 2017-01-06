@@ -54,12 +54,14 @@ body { font-family: 'Open Sans', sans-serif; }
 .navbar-brand, h1, h2, h3, h4, h5, .display-name { font-family: Bitter, serif; }
 
 h1.title { font-size: 2em; color: #fff; float: right; padding: 0; margin-top: .1em; }
-h1 a { font-size: 2em; position: absolute; top: 10px; left: 10px;   text-shadow:
-       3px 3px 0 $dark-blue,
-     -1px -1px 0 $dark-blue,  
-      1px -1px 0 $dark-blue,
-      -1px 1px 0 $dark-blue,
-       1px 1px 0 $dark-blue; }
+h1 a { font-size: 1.5em; position: absolute; top: 10px; left: 10px;
+       color: $dark-blue,
+       text-shadow:
+       3px 3px 0 #fff,
+     -1px -1px 0 #fff,
+      1px -1px 0 #fff,
+      -1px 1px 0 #fff,
+      1px 1px 0 #fff }
 h1 { position: relative; }
 
 .row h3 { margin-top: 0; }
