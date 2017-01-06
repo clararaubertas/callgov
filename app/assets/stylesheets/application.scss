@@ -53,7 +53,22 @@ a:link, a:hover, a:visited { font-weight: bold; }
 body { font-family: 'Open Sans', sans-serif; }
 .navbar-brand, h1, h2, h3, h4, h5, .display-name { font-family: Bitter, serif; }
 
+h1 { margin: 0; padding: 0; }
+h1.title { font-size: 2em; color: #fff; float: right; padding: 0; margin-top: .1em; }
+h1 a.navbar-brand {
+    font-size: 1.5em;
+    position: absolute;
+    left: 20px;;
+    top: .5em;
+    margin: 0; padding: 0;
+    color: #fff;
+    text-shadow:
+    3px 3px 0 #002566,
+    -1px -1px 0 #002566,
+    1px -1px 0 #002566,
+    -1px 1px 0 #002566,
 }
+h1 a.navbar-brand .fa { opacity: .5; margin-right: 20px; font-size: 65px; }
 h1 a.navbar-brand:hover {
     color: $light-blue;
 }
