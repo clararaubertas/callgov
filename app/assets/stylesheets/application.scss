@@ -39,9 +39,7 @@ td a:hover { text-decoration: none; }
 .navbar-inverse .btn-twitter, .navbar-inverse .btn-facebook, .navbar-inverse .btn-google { font-size: .8em; }
 
 .navbar-inverse .navbar-brand {
-    color: #fff;
     font-weight: bold; 
-    font-size: 2em; 
 }
 .navbar-brand .glyphicon { margin-top: -10px; }
 .btn-group input[type='radio'] { display: none; }
@@ -53,6 +51,7 @@ a:link, a:hover, a:visited { font-weight: bold; }
 body { font-family: 'Open Sans', sans-serif; }
 .navbar-brand, h1, h2, h3, h4, h5, .display-name { font-family: Bitter, serif; }
 
+h1 { margin: 0; padding: 0; }
 h1.title { font-size: 2em; color: #fff; float: right; padding: 0; margin-top: .1em; }
 h1 a { font-size: 1.5em; position: absolute; top: 10px; left: 10px;
        color: $dark-blue,
