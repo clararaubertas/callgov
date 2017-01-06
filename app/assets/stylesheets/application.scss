@@ -74,10 +74,11 @@ h1 a.navbar-brand:hover {
 }
 
 
-@media (min-width: 768px)
+@media (min-width: 768px) {
 .navbar-nav>li>a {
     padding-top: 15px;
     padding-bottom: 15px;
+}
 }
 .navbar-header { padding-top: .5em; }
 .navbar-header h1 { position: relative; height: 100px;}
