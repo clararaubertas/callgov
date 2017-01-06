@@ -68,12 +68,13 @@ h1 a.navbar-brand {
     1px -1px 0 #002566,
     -1px 1px 0 #002566,
 }
-h1 a.navbar-brand .fa { margin-right: 1em; }
+h1 a.navbar-brand .fa { margin-right: 15px; opacity: .8; }
 h1 a.navbar-brand:hover {
     color: $light-blue;
 }
 
 h1 { position: relative; }
+h1 img { padding-top: 5px; padding-bottom: 5px; }
 
 .row h3 { margin-top: 0; }
 
