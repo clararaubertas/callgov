@@ -43,7 +43,7 @@ td a:hover { text-decoration: none; }
     color: $dark-blue;
 }
 .navbar-brand .glyphicon { margin-top: -10px; }
-.navbar-brand .fa { float: left; }
+
 .btn-group input[type='radio'] { display: none; }
 .phone-number { font-size: 2em; width: 100%; }
 .complete-call { width: 100%; background: #ac0000;}
@@ -61,8 +61,10 @@ h1 a.navbar-brand {
     left: .5em;
     bottom: .5em;
     margin: 0; padding: 0;
-       color: $dark-blue;
-       text-stroke: 2px #fff; }
+    color: #fff;
+    text-shadow: 3px 3px 0 #002566, -1px -1px 0 #002566, 1px -1px 0 #002566, -1px 1px 0 #002566, 1px 1px 0 #00256;
+}
+h1 a.navbar-brand .fa { color: $dark-blue; }
 
 h1 { position: relative; }
 
