@@ -8,6 +8,7 @@ class CallingScript < ActiveRecord::Base
   delegate :picture, :to => :user, :prefix => true
   delegate :provider, :to => :user, :prefix => true
 
+
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :finders] 
 

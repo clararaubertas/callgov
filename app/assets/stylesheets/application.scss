@@ -21,6 +21,7 @@
 
 @import "bootstrap-variables.scss";
 
+
 #rep-chooser .form-check-label { text-align: left; margin-bottom: 1em;  width: 100%; }
 
 .logged-in-user { color: #fff; padding-top: 11px; padding-bottom: 10px; display: block; position: relative; font-weight: bold; }
@@ -30,6 +31,11 @@ td a:hover { text-decoration: none; }
 .navbar-inverse .navbar-nav > li > a {
     color: #fff;
 }
+
+.navbar-inverse { padding-bottom: 5px; }
+.navbar { min-height: 1em; max-height: 8em; }
+
+
 
 .sort-links { float: right; margin-top: 3em; margin-bottom: .5em; }
 #script-list { clear: both; }
@@ -54,12 +60,10 @@ body { font-family: 'Open Sans', sans-serif; }
 .navbar-brand, h1, h2, h3, h4, h5, .display-name { font-family: Bitter, serif; }
 
 h1 { margin: 0; padding: 0; }
-h1.title { font-size: 2em; color: #fff; float: right; padding: 0; margin-top: .1em; padding-bottom: .1em;}
-h1 a.navbar-brand {
-    font-size: 1.5em;
-    position: absolute;
-    left: 20px;;
-    top: .5em;
+h1.title { font-size: 1em; color: #fff; float: right; padding: 0; margin-top: -.8em; padding-bottom: .5em;}
+
+h1 a.navbar-brand, h1 .fa {
+    font-size: 1em;
     margin: 0; padding: 0;
     color: #fff;
     text-shadow:
@@ -68,7 +72,10 @@ h1 a.navbar-brand {
     1px -1px 0 #002566,
     -1px 1px 0 #002566,
 }
-h1 a.navbar-brand .fa { opacity: .8; margin-right: 20px; margin-left: 20px; font-size: 65px; color: $dark-blue; text-shadow: none;  }
+
+
+
+
 h1 a.navbar-brand:hover {
     color: $light-blue;
 }
@@ -79,11 +86,14 @@ h1 a.navbar-brand:hover {
     padding-top: 15px;
     padding-bottom: 15px;
 }
-}
-.navbar-header { padding-top: .5em; }
-.navbar-header h1 { position: relative; height: 100px;}
+h1.title { margin-right: -15px; font-size: 2em; }
 
-h1 img { padding-top: 5px; padding-bottom: 5px; }
+}
+.navbar-header { padding-top: 1em; }
+
+
+.navbar-header img {  position: absolute; top: 0; left: 0; width: 100%; object-fit: cover; height: 100%; filter: brightness(60%); z-index: -1; }
+
 
 .row h3 { margin-top: 0; }
 
@@ -224,6 +234,10 @@ $size: 2em;
 @media only screen 
   and (min-width: 1200px) 
   {
+      h1 a.navbar-brand, h1 .fa {
+    font-size: 1.5em;
+      }
+
       a.call { font-size: 2em; }
       .call-numbers .badge { font-size: 2em; }
       .display-name { margin-top: 40px; text-align: left; }
