@@ -38,6 +38,7 @@ group :development, :test do
   gem 'capybara'
   gem 'faker'
   gem 'headhunter'
+  gem 'metric_fu'
 end
 
 group :development do
