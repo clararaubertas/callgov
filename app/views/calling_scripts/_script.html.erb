@@ -1,5 +1,5 @@
 <div class='row row-striped'>
-  <div class='col-xs-7 mvm'>
+  <div class='col-xs-6 mvm'>
     <h3>
       <%= link_to calling_script.topic, script_path(calling_script) %>
     </h3>
@@ -13,16 +13,17 @@
     </p>
   </div>
 
-  <div class='col-xs-5'>
+  <div class='col-xs-6'>
     <div class='row'>
       <div class='col-sm-5 mvm'>
         <div class='row label label-primary call-numbers'>
-	  <div class='col-xs-12 col-md-3'>
+	  <div class='col-xs-12 col-md-5'>
             <span class='badge badge-primary'>
 	      <%= calling_script.calls_count %>
+	      <span class='fa fa-group'></span>
             </span>
 	  </div>
-          <div class='col-xs-12 col-md-9 already'>
+          <div class='col-xs-12 col-md-7 already'>
 	    already called
 	  </div>
 	</div>

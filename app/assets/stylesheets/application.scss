@@ -100,8 +100,13 @@ h1.title { margin-right: -15px; font-size: 2em; }
 .navbar-header { padding-top: 1em; }
 
 
-.navbar-header img {  position: absolute; top: 0; left: 0; width: 100%; object-fit: cover; height: 100%; filter: brightness(60%); z-index: -1; }
+.navbar-header img {  position: absolute; top: 0; left: 0; width: 100%; object-fit: cover; height: 100%; filter: brightness(60%); z-index: -3; }
 
+
+
+
+.container { background: #fff; }
+nav .container, footer .container { background: transparent; }
 
 .row h3 { margin-top: 0; }
 
