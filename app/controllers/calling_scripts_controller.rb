@@ -14,8 +14,8 @@ class CallingScriptsController < ApplicationController
       smart_listing_create(
         :calling_scripts,
         (search ?
-           CallingScript.search_by_full_text(search) :
-           CallingScript.all),
+           CallingScript.active.search_by_full_text(search) :
+           CallingScript.active),
         partial: "calling_scripts/scripts",
         default_sort: {created_at: "desc", calls_count: "desc"},
         remote: false

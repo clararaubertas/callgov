@@ -7,7 +7,8 @@ class CallingScript < ActiveRecord::Base
   delegate :profile, :to => :user, :prefix => true
   delegate :picture, :to => :user, :prefix => true
   delegate :provider, :to => :user, :prefix => true
-
+  after_initialize :set_archived
+  scope :active, -> { where(archived: false) }
 
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :finders] 
@@ -21,6 +22,10 @@ class CallingScript < ActiveRecord::Base
     ]
   end
 
+  def set_archived
+    archived ||= false
+  end
+  
   def more_reps?(uid)
     Call.find(:all, conditions: { calling_script_id: id, user_id: uid}).size < 3
   end
