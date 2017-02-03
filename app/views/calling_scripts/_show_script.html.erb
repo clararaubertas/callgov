@@ -21,18 +21,29 @@
 	</span>
 	<img src="<%= calling_script.user_picture %>" height="30" width="30">
       </a>
+    </small>
   </p>
   <p class='text-muted user-info'>
     <small>
       created <%= calling_script.created_at.strftime("%B %e, %Y") %>
     </small>
   </p>
-  <% if current_user == calling_script.user %>
-    <%= link_to edit_script_path(calling_script), class: 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-edit"></span>
-    Edit
-  <% end %>
-  <% end %>
   <p>
+    <% if current_user.can(:edit, calling_script) %>
+      <%= link_to edit_script_path(calling_script), class: 'btn btn-primary' do %>
+      <span class="glyphicon glyphicon-edit"></span>
+      Edit
+    <% end %>
+<% end %>
+</p>
+<p>
+  <% if current_user.can(:archive, calling_script) %>
+    <%= link_to archive_script_path(calling_script), class: 'btn btn-primary' do %>
+    <span class="glyphicons glyphicons-log-book"></span>
+    Archive
+  <% end %>
+<% end %>
+</p>
+
 </div>
 
