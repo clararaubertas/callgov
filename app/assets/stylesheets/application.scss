@@ -21,44 +21,26 @@
 
 @import "bootstrap-variables.scss";
 
-.alert { margin-bottom: 0; margin-top: 20px; }
-
-#rep-chooser .form-check-label { text-align: left; margin-bottom: 1em;  width: 100%; }
-
+/* navigation styles */
 .logged-in-user { color: #fff; padding-top: 11px; padding-bottom: 10px; display: block; position: relative; font-weight: bold; }
-
-td a:hover { text-decoration: none; }
-
 .navbar-inverse .navbar-nav > li > a {
     color: #fff;
 }
-
 .navbar-inverse { padding-bottom: 5px; }
 .navbar { min-height: 1em; max-height: 8em; }
-
-
-
-.sort-links { float: right; margin-top: 3em; margin-bottom: .5em; }
-#script-list { clear: both; }
-
-
-.navbar-inverse .btn { padding: 5px; margin-top: 10px; margin-bottom: 10px; margin-left: 5px; margin-right: 5px;}
-.navbar-inverse .btn-twitter, .navbar-inverse .btn-facebook, .navbar-inverse .btn-google { font-size: .8em; }
-
+.navbar-inverse .btn {
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    margin-right: 5px;}
+.navbar-inverse .btn-twitter,
+.navbar-inverse .btn-facebook,
+.navbar-inverse .btn-google { font-size: .8em; }
 .navbar-inverse .navbar-brand {
     font-weight: bold;
     color: #fff;
 }
-.navbar-brand .glyphicon { margin-top: -10px; }
-
-.btn-group input[type='radio'] { display: none; }
-.phone-number { font-size: 2em; width: 100%; }
-.complete-call { width: 100%; background: #ac0000;}
-
-a:link, a:hover, a:visited { font-weight: bold; }
-
-body { font-family: 'Open Sans', sans-serif; }
-.navbar-brand, h1, h2, .display-name { font-family: Bitter, serif; }
 h1.title { font-family: 'Open Sans', sans-serif; font-weight: bold;
  text-shadow:
    -1px -1px 0 $dark-blue,  
@@ -66,118 +48,73 @@ h1.title { font-family: 'Open Sans', sans-serif; font-weight: bold;
     -1px 1px 0 $dark-blue,
      1px 1px 0 $dark-blue;
 	 }
-.scripts { padding-top: 2em; }
 h1 { margin: 0; padding: 0; }
 h1.title { font-size: 1em; color: #fff; float: right; padding: 0; margin-top: -.8em; padding-bottom: .5em;}
-
 h1 a.navbar-brand, h1 .fa {
     font-size: 1em;
     margin: 0; padding: 0;
     color: #fff;
     text-shadow:
-    3px 3px 0 #002566,
-    -1px -1px 0 #002566,
-    1px -1px 0 #002566,
-    -1px 1px 0 #002566,
+    3px 3px 0 $dark-blue,
+    -1px -1px 0 $dark-blue,
+    1px -1px 0 $dark-blue,
+    -1px 1px 0 $dark-blue,
 }
-
-
-
-
 h1 a.navbar-brand:hover {
     color: $light-blue;
 }
-
-
-@media (min-width: 768px) {
-.navbar-nav>li>a {
-    padding-top: 15px;
-    padding-bottom: 15px;
-}
-h1.title { margin-right: -15px; font-size: 2em; }
-
-}
 .navbar-header { padding-top: 1em; }
-
-
 .navbar-header img {  position: absolute; top: 0; left: 0; width: 100%; object-fit: cover; height: 100%; filter: brightness(60%); z-index: -3; }
-
-
-
-
-.container { background: #fff; }
-nav .container, footer .container { background: transparent; }
-
-.row h3 { margin-top: 0; }
-
-.row-striped:nth-of-type(odd){
-    background-color: lighten($light-blue, 10%);
+body {
+  padding-top: $navbar-height + 10px;
 }
-
-.row-striped:nth-of-type(even){
-    background-color: $light-blue;
-}
-
-.share-buttons { margin-top: 2em; float: left; }
+.navbar-right .btn-group { padding-top: 3px; }
 
 
-/*margin vertical medium (eventually we can add more of these)*/
+/* general styles */
+.navbar-brand, h1, h2, .display-name { font-family: Bitter, serif; }
+.alert { margin-bottom: 0; margin-top: 20px; }
+a:link, a:hover, a:visited { font-weight: bold; }
+body { font-family: 'Open Sans', sans-serif; }
 .mvm {
   margin-top: 1em;
   margin-bottom: 1em;
 }
 
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    font-size: .8em;
-}
-
-html {
-  height: 100%;
-  box-sizing: border-box;
-}
-
-body {
-  position: relative;
-  margin: 0;
-  padding-bottom: 4em;
-  min-height: 100%;
-}
-
+/* script styles */
+#rep-chooser .form-check-label { text-align: left; margin-bottom: 1em;  width: 100%; }
+.sort-links { float: right; margin-top: 3em; margin-bottom: .5em; }
+.phone-number { font-size: 2em; width: 100%; }
+.complete-call { width: 100%; background: $red;}
+#script-list { clear: both; }
 #script-list .btn-secondary { background: #fff; }
 #script-list .btn-secondary:hover { background: darken(#efefef, 10%); }
 #script-list .btn, #script-list .label { display: block; padding: 0; padding-top: 5px; padding-bottom: 5px; }
-
 #script-list .label { padding: 1em; }
 .pagination { padding-bottom: 2em; }
-.call-numbers .badge { background: #ac0000; color: #fff; }
-.sort-links .btn-secondary { border: 1px solid #002566; }
-
+.call-numbers .badge { background: $red; color: #fff; }
+.sort-links { display: inline-block; }
+.sort-links .btn-secondary { border: 1px solid $dark-blue; }
 .well p { margin-bottom: 0; }
 .well.notes { overflow: scroll; }
 .jumbotron .notes { font-size: .9em; }
-
 .user-info a:hover { text-decoration: none; }
-
 .form-group.required .control-label:after {
     font-family: 'FontAwesome';
     font-weight: normal;
     font-size: .8em;
-    content: "\f069";
-    color: #ac0000;
+    content: "\f005";
+    color: $red;
     position: absolute;
     top: .3em;
     right: 0em;
 }
-
+.btn-group input[type='radio'] { display: none; }
 .btn-democrat, .democrat { background-color: $dark-blue; }
 .btn-republican, .republican { background-color: $red; }
 .btn-republican:hover { background-color: darken($red, 10%); }
 .btn-republican.disabled { background-color: lighten($red, 10%);}
 .btn-republican,.btn-republican.disabled {  border-color: $red; }
-
 .display-name {
     color: #fff;
     border-radius: $border-radius-base;
@@ -185,54 +122,32 @@ body {
     padding: 1em;
     text-align: center;
 }
-
 label .display-name { padding: 0em; font-size: 1.5em; }
 .rep-image { display: block; margin: auto; padding: 1em; border-radius: 50%; }
-
-@media (min-width: 768px) {
-.navbar-header {
-    width: 35%;
-    float: left;
-}}
-
-
-body {
-  padding-top: $navbar-height + 10px;
+.scripts { padding-top: 2em; }
+.row h3 { margin-top: 0; }
+.row-striped:nth-of-type(odd){
+    background-color: lighten($light-blue, 10%);
 }
-.navbar-right .btn-group { padding-top: 3px; }
-
+.row-striped:nth-of-type(even){
+    background-color: $light-blue;
+}
 .page-header {
   a.btn {
     float: right;
   }
-
   a.btn + a.btn {
     margin-right: 8px;
   }
 }
-
 input[type="radio"], input[type="checkbox"] {
   width: initial;
   height: initial;
   margin-top: 7px;
 }
-
-
-.footer {
-    background-color: $gray-dark;
-    color: $gray-light;
-
-}
-
-.footer span { padding: 1em; }
-
-.footer a { color: $gray-lighter; }
-
 .badge-info { background: $jumbotron-bg; }
-
-
+.share-buttons { margin-top: 2em; float: left; }
 $size: 2em;
-
 .social-share-button {
   .ssb-icon {
     background-size: $size $size;
@@ -242,8 +157,43 @@ $size: 2em;
 }
 
 
-.sort-links { display: inline-block; }
 
+/* footer styles */
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    font-size: .8em;
+}
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 4em;
+  min-height: 100%;
+}
+.footer {
+    background-color: $gray-dark;
+    color: $gray-light;
+
+}
+.footer span { padding: 1em; }
+.footer a { color: $gray-lighter; }
+
+@media (min-width: 768px) {
+.navbar-nav>li>a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+h1.title { margin-right: -15px; font-size: 2em; }
+
+.navbar-header {
+    width: 35%;
+    float: left;
+}}
 @media only screen 
   and (min-width: 1200px) 
   {
@@ -257,6 +207,4 @@ $size: 2em;
       .display-name br { display: none; }
       
       #script-list .label .already { text-align: left; margin-top: .5em; font-size: 150%; }
-
 }
-
