@@ -3,6 +3,7 @@ FactoryGirl.define do
     name                   "Test User"
     sequence(:email){|n| "user#{n}@factory.com" }
     password               "password"
-    password_confirmation  "password"    
+    password_confirmation  "password"
+    provider "google"
   end
 end
