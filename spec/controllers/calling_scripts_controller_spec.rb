@@ -28,6 +28,31 @@ RSpec.describe CallingScriptsController, type: :controller do
     end
   end
 
+  describe "POST #archive" do
+    before(:each) do
+      @calling_script = FactoryGirl.create(:calling_script)
+      @user = FactoryGirl.create(:user)
+    end
+
+    it "should not allow archiving if it is not an admin" do
+      sign_in(@user)
+      expect {
+        post :archive, id: @calling_script.to_param
+        @calling_script.reload
+      }.not_to change(@calling_script, :archived)
+    end
+
+    it "should allow archiving if it is an admin" do
+      @user.update_attribute(:admin, true)
+      sign_in(@user)
+      expect {
+        post :archive, id: @calling_script.to_param
+        @calling_script.reload
+      }.to change(@calling_script, :archived)
+    end
+    
+  end
+  
   describe "GET #show" do
     before(:each) do
       @calling_script = FactoryGirl.create(:calling_script)

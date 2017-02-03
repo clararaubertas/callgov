@@ -7,7 +7,8 @@ class Ability
     can :read, :all
     if user
       can [:read, :create], CallingScript
-      can [:update, :destroy], CallingScript, :user_id => user.id
+      can [:update, :destroy, :archive], CallingScript, :user_id => user.id
+      can [:archive], CallingScript if user.admin
     end
     #
     # The first argument to `can` is the action you are giving the user

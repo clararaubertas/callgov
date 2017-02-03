@@ -38,7 +38,7 @@ group :development, :test do
   gem 'capybara'
   gem 'faker'
   gem 'headhunter'
-  gem 'metric_fu'
+  gem 'metric_fu', git: 'https://github.com/bergholdt/metric_fu.git'
 end
 
 group :development do

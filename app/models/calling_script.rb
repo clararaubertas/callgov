@@ -23,7 +23,7 @@ class CallingScript < ActiveRecord::Base
   end
 
   def set_archived
-    archived ||= false
+    self.archived ||= false
   end
   
   def more_reps?(uid)

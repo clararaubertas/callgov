@@ -79,6 +79,12 @@ class CallingScriptsController < ApplicationController
                 notice: 'Script was successfully destroyed.' 
   end
 
+  def archive
+    @calling_script.update_attribute(:archived, true)
+    redirect_to scripts_path,
+                notice: 'Script was successfully archived.' 
+  end
+
   private
 
   def find_representative_from_id
