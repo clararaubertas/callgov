@@ -31,7 +31,7 @@
   <p>
     <% if can? :edit, calling_script %>
       <%= link_to edit_script_path(calling_script), class: 'btn btn-primary' do %>
-      <span class="glyphicon glyphicon-edit"></span>
+      <span class="fa fa-edit" aria-hidden='true'></span>
       Edit
     <% end %>
 <% end %>
@@ -39,7 +39,7 @@
 <p>
   <% if can? :archive, calling_script %>
     <%= button_to archive_script_path(calling_script), class: 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-log-book"></span>
+    <span class="fa fa-archive" aria-hidden='true'></span>
     Archive
   <% end %>
 <% end %>
