@@ -38,8 +38,8 @@
 </p>
 <p>
   <% if can? :archive, calling_script %>
-    <%= link_to archive_script_path(calling_script), class: 'btn btn-primary' do %>
-    <span class="glyphicons glyphicons-log-book"></span>
+    <%= button_to archive_script_path(calling_script), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-log-book"></span>
     Archive
   <% end %>
 <% end %>
