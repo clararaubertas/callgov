@@ -1,3 +1,4 @@
+# the Legislator class represents a senator or representative
 class Legislator < Sunlight::Legislator
 
   def self.all_for(address)

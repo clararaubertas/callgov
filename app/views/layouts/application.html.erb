@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-      CallGov.us: a simple tool for calling your senators and representatives in congress
+      CallGov.us: <%= @title %>
     </title>
-    <meta name="description" content="Call your representatives in Congress with this easy tool! Create scripts and calls-to-action, track your calls, and share with friends.">
+    <meta name="description" content="<%= @description %>">
     <%= favicon_link_tag 'favicon.ico' %>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -35,11 +35,10 @@
 	  <%= msg %>
 	</div>
       <% end %>
-<div class='alert alert-info fade in alert-dismissable'>
+      <div class='alert alert-info fade in alert-dismissable'>
   <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
   CallGov would like to hear from you! Contact <a href="mailto:feedback@callgov.us">feedback@callgov.us</a> to let us know how we can improve.
   </div>
-
 
       <%= yield %>
     </div>

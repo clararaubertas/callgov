@@ -28,22 +28,24 @@
       created <%= calling_script.created_at.strftime("%B %e, %Y") %>
     </small>
   </p>
+  <% if can? :edit, calling_script %>
   <p>
-    <% if can? :edit, calling_script %>
-      <%= link_to edit_script_path(calling_script), class: 'btn btn-primary' do %>
-      <span class="fa fa-edit" aria-hidden='true'></span>
-      Edit
-    <% end %>
-<% end %>
+    <%= link_to edit_script_path(calling_script), class: 'btn btn-primary' do %>
+    <span class="fa fa-edit" aria-hidden='true'></span>
+    Edit
+  <% end %>
 </p>
-<p>
-  <% if can? :archive, calling_script %>
+<% end %>
+
+<% if can? :archive, calling_script %>
+  <p>
     <%= button_to archive_script_path(calling_script), class: 'btn btn-primary' do %>
     <span class="fa fa-archive" aria-hidden='true'></span>
     Archive
-  <% end %>
 <% end %>
 </p>
+<% end %>
+
 
 </div>
 

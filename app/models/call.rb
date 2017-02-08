@@ -1,3 +1,4 @@
+# the Call class tracks calls that have been placed
 class Call < ActiveRecord::Base
   belongs_to :user
   belongs_to :calling_script, counter_cache: true

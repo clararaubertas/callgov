@@ -3,7 +3,7 @@ class CallingScriptsController < ApplicationController
   include SmartListing::Helper::ControllerExtensions
   helper  SmartListing::Helper
   
-  load_and_authorize_resource
+  load_and_authorize_resource :prepend => true
 
   before_filter :set_uid
 

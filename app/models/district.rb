@@ -1,3 +1,4 @@
+# the District class represents a congressional district
 class District < Sunlight::District
 
   def self.get_from_lat_long(latitude, longitude)

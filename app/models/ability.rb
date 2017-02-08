@@ -1,3 +1,4 @@
+# the Ability class controls user permissions
 class Ability
   include CanCan::Ability
 
