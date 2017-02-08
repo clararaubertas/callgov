@@ -9,6 +9,7 @@ class CallingScript < ActiveRecord::Base
   delegate :provider, :to => :user, :prefix => true
   after_initialize :set_archived
   scope :active, -> { where(archived: false) }
+  acts_as_taggable
 
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :finders] 
