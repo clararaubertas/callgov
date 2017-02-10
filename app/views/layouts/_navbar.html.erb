@@ -1,20 +1,20 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
+          <h1>
+	<a href="/" class="navbar-brand">
+	  <%= fa_icon 'phone' %>
+          CallGov.us
+	</a>
+      </h1>
+
     <div class="navbar-header">
       <%= image_tag 'capitol.png', :alt => 'callgov.us', :class => 'hidden-sm hidden-xs' %>
-
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <h1>
-	<a href="/" class="navbar-brand">
-	  <%= fa_icon 'phone' %>
-          CallGov.us
-	</a>
-      </h1>
     </div>
 
     <div id="navbar" class="collapse navbar-collapse">
@@ -27,7 +27,9 @@
         </li>
         <% if user_signed_in? %>
           <li>
-            <span class='logged-in-user'>Signed in as <%= current_user.email %>     <img src="<%= current_user.picture %>" width="30" height="30" />
+            <span class='logged-in-user'>
+	      Signed in as <%= current_user.email %>
+	      <img src="<%= current_user.picture %>" width="30" height="30" />
 	      I've made
               <div class='badge'>
                 <%= current_user.calls.size %>
@@ -35,18 +37,16 @@
               calls so far!
             </span>
           </li>
-          <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+          <li>
+	    <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+	  </li>
         <% else %>
           <li><%= render :partial => 'devise/shared/links' %></li>
         <% end %>
       </ul>
-
-      </div>
-
-
-          	<h1 class='title'>Call Your Senators and Representatives in Congress</h1>
-
     </div>
+    <h1 class='title'>Call Your Senators and Representatives in Congress</h1>
+  </div>
 </nav>
 <p class='clearing'>&nbsp;</p>
 

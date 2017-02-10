@@ -17,7 +17,7 @@ class CallingScriptsController < ApplicationController
            CallingScript.active.search_by_full_text(search) :
            CallingScript.active),
         partial: "calling_scripts/scripts",
-        default_sort: {created_at: "desc", calls_count: "desc"},
+        default_sort: {calls_count: "desc", created_at: "desc"},
         remote: false
       )
     flash[:error] = "No scripts found." if @calling_scripts.empty?

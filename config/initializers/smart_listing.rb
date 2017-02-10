@@ -8,11 +8,11 @@ SmartListing.configure do |config|
     #:array                          => false,                       # controls whether smart list should be using arrays or AR collections
     #:max_count                      => nil,                         # limit number of rows
     :unlimited_per_page             => true,                       # allow infinite page size
-    #:paginate                       => true,                        # allow pagination
+    :paginate                       => false,                        # allow pagination
     #:memorize_per_page              => false,                       # save per page settings in the cookie
     #:page_sizes                     => DEFAULT_PAGE_SIZES,          # set available page sizes array
     #:kaminari_options               => {:theme => "smart_listing"}, # Kaminari's paginate helper options
-    #:sort_dirs                      => [nil, "asc", "desc"],        # Default sorting directions cycle of sortables
+    :sort_dirs                      => ["desc", "asc"],        # Default sorting directions cycle of sortables
   })
 
   config.constants :classes, {
@@ -47,9 +47,9 @@ SmartListing.configure do |config|
     #:icon_trash            => "glyphicon glyphicon-trash",
     #:icon_inactive         => "glyphicon glyphicon-circle",
     #:icon_show             => "glyphicon glyphicon-share-alt",
-    :icon_sort_none        => "fa fa-sort",
-    :icon_sort_up          => "fa fa-arrow-circle-o-up",
-    :icon_sort_down        => "fa fa-arrow-circle-o-down",
+    :icon_sort_none        => "",
+    :icon_sort_up          => "fa fa-sort-amount-asc",
+    :icon_sort_down        => "fa fa-sort-amount-desc",
     #:muted                 => "text-muted",
   }
 
