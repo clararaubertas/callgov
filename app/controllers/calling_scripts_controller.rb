@@ -2,9 +2,8 @@ class CallingScriptsController < ApplicationController
 
   include SmartListing::Helper::ControllerExtensions
   helper  SmartListing::Helper
-  
   load_and_authorize_resource :prepend => true
-
+  before_action :set_paper_trail_whodunnit
   before_filter :set_uid
 
   # GET /calling_scripts

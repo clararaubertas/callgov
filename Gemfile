@@ -79,3 +79,4 @@ gem 'platform-api', github: 'jalada/platform-api', branch: 'master'
 
 gem 'letsencrypt-rails-heroku', group: 'production'
 gem 'acts-as-taggable-on'
+gem 'paper_trail'

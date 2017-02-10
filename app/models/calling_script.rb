@@ -10,7 +10,7 @@ class CallingScript < ActiveRecord::Base
   after_initialize :set_archived
   scope :active, -> { where(archived: false) }
   acts_as_taggable
-
+  has_paper_trail
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :finders] 
 
