@@ -36,6 +36,8 @@ class CallingScriptsController < ApplicationController
       find_representative_from_id
     elsif @address
       find_representatives_from_location
+      current_user.update_attribute(:address, @address) if params[:save_address]
+      current_user.update_attribute(:address, nil) if params[:delete_address]
     end
   end
 

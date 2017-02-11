@@ -3,10 +3,20 @@
   <form method="get">
     <div class="form-group">
       <div id="gmaps-error"></div>
-      <input type="address" class="form-control" placeholder="Street Address, City, State, Zip" name="address" id="gmaps-input-address" />
-      <small class="form-text text-muted">We don't store this information; it's just to find your representatives.</small>
-    </div>
+      <input type="address" class="form-control" placeholder="Street Address, City, State, Zip" name="address" id="gmaps-input-address" value="<%= current_user.try(:address) %>" />
+      <small class="form-text text-muted">We don't store this information by default; it's just to find your representatives.</small>
+
     
-    <button type="submit" class="btn btn-primary">Find my reps!</button>
+
+          <% if current_user %>
+	<br />
+      <small ><input type="checkbox" name="save_address" value="true" />
+	Save this location to my profile</small>
+      <br />
+      <small ><input type="checkbox" name="delete_address" value="true" />
+	Clear location from my profile</small>
+	  <% end %>
+	      </div>
+    <button type="submit" class="btn btn-primary">Find my reps!</button>	  
   </form>
 </div>
