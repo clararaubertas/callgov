@@ -10,11 +10,15 @@
 
           <% if current_user %>
 	<br />
-      <small ><input type="checkbox" name="save_address" value="true" />
-	<label for="save_address">Save this location to my profile</label></small>
+	<small >
+	  <label>
+	    <input type="checkbox" name="save_address" value="true" />
+	    Save this location to my profile</label></small>
       <br />
-      <small ><input type="checkbox" name="delete_address" value="true" />
-	<label for="delete_address">Clear location from my profile</label></small>
+      <small >
+	<label>
+	  <input type="checkbox" name="delete_address" value="true" />
+	  Clear location from my profile</label></small>
 	  <% end %>
 	      </div>
     <button type="submit" class="btn btn-primary">Find my reps!</button>	  
