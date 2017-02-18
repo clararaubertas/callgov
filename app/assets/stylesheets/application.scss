@@ -75,6 +75,7 @@ body {
 
 
 /* general styles */
+.container { width: 1200px; }
 .navbar-brand, h1, h2, .display-name { font-family: Bitter, serif; }
 .alert { margin-bottom: 0; margin-top: 20px; }
 a:link, a:hover, a:visited { font-weight: bold; }
@@ -95,7 +96,7 @@ body { font-family: 'Open Sans', sans-serif; }
 #script-list .btn .fa-phone { font-size: 1.5em; }
 #script-list .btn-secondary:hover { background: darken(#efefef, 10%); }
 #script-list .btn, #script-list .label { display: block; padding: 0; padding-top: 5px; padding-bottom: 5px; }
-#script-list .label { padding: 1em; }
+a.call { background: $red; border-color: darken($red, 10%); }
 .pagination { padding-bottom: 2em; }
 .call-numbers .badge { background: $red; color: #fff; }
 .sort-links { display: inline-block; }
@@ -208,10 +209,10 @@ h1.title { margin-right: -15px; font-size: 2em; margin-top: -25px; padding-botto
       }
       a.navbar-brand { margin-top: 0; padding-top: 0; }
 
-      a.call { font-size: 2em; }
-      .call-numbers .badge { font-size: 2em; }
+      a.call { font-size: 1.6em; }
+      .call-numbers .badge { font-size: 1.5em; }
       .display-name { margin-top: 40px; text-align: left; }
       .display-name br { display: none; }
       
-      #script-list .label .already { text-align: left; margin-top: .5em; font-size: 150%; }
+      #script-list .label .already { text-align: left; margin-top: .1em; font-size: 110%; }
 }

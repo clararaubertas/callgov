@@ -1,38 +1,39 @@
-<div class='row row-striped'>
-  <div class='col-xs-6 mvm'>
+<div class='col-xs-12 col-md-4 row-striped'>
+
+  <div class='col-xs-12 mvm'>
     <h3>
       <%= link_to calling_script.topic, script_path(calling_script) %>
     </h3>
+  </div>
+
+  <div class='col-xs-12'>
     <a href="<%= script_path(calling_script) %>">
       <%= (simple_format calling_script.summary) %>
     </a>
-    <p>
-      <small class="text-muted">
-	<%= calling_script.created_at.strftime("%B %e, %Y") %>
-      </small>
-    </p>
   </div>
 
-  <div class='col-xs-6'>
-    <div class='row'>
-      <div class='col-sm-5 mvm'>
-        <div class='row label label-primary call-numbers'>
-	  <div class='col-xs-12 col-md-5'>
-            <span class='badge badge-primary'>
-	      <%= calling_script.calls_count %>
-	      <span class='fa fa-group'></span>
-            </span>
-	  </div>
-          <div class='col-xs-12 col-md-7 already'>
-	    already called
-	  </div>
+  <div class='col-xs-12'>
+
+
+    <div class='col-sm-5 mvm'>
+      <div class='row label label-primary'>
+	<div class='col-xs-12 col-md-4'>
+          <span class='badge badge-primary'>
+	    <%= calling_script.calls_count %>
+	    <span class='fa fa-group'></span>
+          </span>
+	</div>
+        <div class='col-xs-12 col-md-8 already'>
+	  already called
 	</div>
       </div>
-      
-      <div class='col-sm-7 mvm'>
-        <% if calling_script.called_from_this_script?(uid) %>
-	  <%= render 'calling_scripts/buttons/called',
+    </div>
+    
+    <div class='col-sm-7 mvm'>
+      <% if calling_script.called_from_this_script?(uid) %>
+	<%=  render 'calling_scripts/buttons/called',
 :calling_script => calling_script %>
+
         <% else %>
 	  <a href="<%= script_path(calling_script) %>"
 	     class="btn btn-primary call"
@@ -42,8 +43,15 @@
 	  </a>
 	<% end %>
       </div>
-      
+
+      <div class='col-xs-12'>
+	<p>
+	  <small class="text-muted">
+	    <%= calling_script.created_at.strftime("%B %e, %Y") %>
+	  </small>
+	</p>
+      </div>
     </div>
-  </div>
+  
 </div>
 
