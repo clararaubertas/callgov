@@ -141,6 +141,9 @@ label .display-name { padding: 0em; font-size: 1.5em; }
 .row-striped:nth-of-type(even){
     background-color: $light-blue;
 }
+.row-striped:nth-of-type(3n){
+    clear: both; 
+}
 .page-header {
   a.btn {
     float: right;
