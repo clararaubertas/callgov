@@ -5,7 +5,7 @@ module ApplicationHelper
                 script.tags.map{ |tag|
                   tag = tag.name
                   content_tag(:a, tag, href: scripts_path(:tag => tag))
-                }.join(',').html_safe)
+                }.join(', ').html_safe)
   end
 
   def markdown(script)
