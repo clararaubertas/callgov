@@ -10,7 +10,7 @@ RSpec.describe "CallingScripts", type: :request do
 
   describe "GET /calling_scripts/:id" do
     it "can view the script" do
-      @script = FactoryGirl.create(:calling_script)
+      @script = FactoryGirl.create(:calling_script, :tag_list => 'foo, bar', :notes => 'blah blah blah')
       get script_path @script
       expect(response).to have_http_status(200)
     end

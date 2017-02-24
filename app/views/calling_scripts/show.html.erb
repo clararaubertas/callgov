@@ -1,22 +1,26 @@
 <div class='row scripts'>
   <div class='col-sm-6'>
     <% if @representative %>
+
       <%= render 'calling_info',
 :representative => @representative,
 :calling_script => @calling_script  %>
+
     <% elsif @representatives && !(@representatives.empty?) %>
+
       <%= render 'rep_chooser',
 :representatives => @representatives,
 :calling_script => @calling_script, :uid => @uid  %>
+
     <% else %>
-      <%= render 'user_locator',
-:calling_script => @calling_script  %>
+
+      <%= render 'user_locator', :calling_script => @calling_script  %>
+
     <% end %>
   </div>
   
   <div class='col-sm-6'>
-    <%= render 'show_script',
-:calling_script => @calling_script, :markdown => @markdown %> 
+    <%= render 'show_script', :calling_script => @calling_script %> 
   </div>
 
 </div>

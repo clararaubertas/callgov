@@ -1,0 +1,17 @@
+<% if can? :edit, calling_script %>
+  <p>
+    <%= link_to edit_script_path(calling_script), class: 'btn btn-primary' do %>
+    <span class="fa fa-edit" aria-hidden='true'></span>
+    Edit
+<% end %>
+</p>
+<% end %>
+
+<% if can? :archive, calling_script %>
+  <p>
+    <%= button_to archive_script_path(calling_script), class: 'btn btn-primary' do %>
+    <span class="fa fa-archive" aria-hidden='true'></span>
+    Archive
+<% end %>
+</p>
+<% end %>

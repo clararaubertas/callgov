@@ -36,9 +36,9 @@
     <%= f.label :content, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
       <%= f.text_area :content, class: "form-control",
-"aria-describedby" => "content-help", required: "true", rows: 10 %>
+"aria-describedby" => "content-help", required: "true" %>
       <div class="form-text text-muted" id="content-help">
-	This is where you write a suggested script
+	This is where you write a short script
 	or script outline for callers to use.
       </div>
     </div>
@@ -47,12 +47,21 @@
     <%= f.label :notes, class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
       <%= f.text_area :notes, class: "form-control",
-"aria-describedby" => "notes-help" %>
+"aria-describedby" => "notes-help", rows: 10 %>
       <div class="form-text text-muted" id="notes-help">
 	Here you can enter links and additional information
 	to help the caller understand the issue.
       </div>
     </div>
+    <%= f.label :tag_list, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_area :tag_list, class: "form-control",
+"aria-describedby" => "tags-help" %>
+      <div class="form-text text-muted" id="tags-help">
+	Add some tags to help callers find your script.
+      </div>
+    </div>
+
   </div>
   
   <div class="form-group">

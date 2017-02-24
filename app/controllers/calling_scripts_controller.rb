@@ -9,12 +9,14 @@ class CallingScriptsController < ApplicationController
   # GET /calling_scripts
   def index
     search = params[:search]
+    tag = params[:tag]
+    scripts = CallingScript.active
+    scripts = scripts.search_by_full_text(search) if search
+    scripts = scripts.tagged_with(tag) if tag
     @calling_scripts =
       smart_listing_create(
         :calling_scripts,
-        (search ?
-           CallingScript.active.search_by_full_text(search) :
-           CallingScript.active),
+        scripts,
         partial: "calling_scripts/scripts",
         default_sort: {created_at: "desc"},
         remote: false
@@ -24,11 +26,6 @@ class CallingScriptsController < ApplicationController
 
   # GET /calling_scripts/1
   def show
-    @markdown = Redcarpet::Markdown.new(
-      Redcarpet::Render::HTML,
-      autolink: true,
-      filter_html: true,
-      no_images: true)
     @address = params[:address]
     if params[:i_called]
       finish_call
@@ -123,6 +120,6 @@ class CallingScriptsController < ApplicationController
   # Never trust parameters from the scary internet
   # only allow the white list through.
   def calling_script_params
-    params.require(:calling_script).permit(:content, :topic, :summary, :notes)
+    params.require(:calling_script).permit(:content, :topic, :summary, :notes, :tag_list)
   end
 end

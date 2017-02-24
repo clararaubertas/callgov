@@ -49,5 +49,5 @@ class CallingScript < ActiveRecord::Base
       :calling_script_id => self.id,
       :user_id => user_id)
   end
-  
+
 end

@@ -1,20 +1,20 @@
-<div class='col-xs-12 col-md-4 row-striped'>
+<div class='col-xs-12 row-striped'>
 
-  <div class='col-xs-12 mvm'>
+  <div class='col-xs-6 mvm'>
     <h3>
       <%= link_to calling_script.topic, script_path(calling_script) %>
     </h3>
-  </div>
-
-  <div class='col-xs-12'>
     <a href="<%= script_path(calling_script) %>">
       <%= (simple_format calling_script.summary) %>
     </a>
+    <p>
+      <small class="text-muted">
+	<%= calling_script.created_at.strftime("%B %e, %Y") %>
+      </small>
+    </p>
   </div>
 
-  <div class='col-xs-12'>
-
-
+  <div class='col-xs-6'>
     <div class='col-sm-5 mvm'>
       <div class='row label label-primary'>
 	<div class='col-xs-12 col-md-4'>
@@ -45,11 +45,6 @@
       </div>
 
       <div class='col-xs-12'>
-	<p>
-	  <small class="text-muted">
-	    <%= calling_script.created_at.strftime("%B %e, %Y") %>
-	  </small>
-	</p>
       </div>
     </div>
   

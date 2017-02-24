@@ -142,14 +142,10 @@ label .display-name { padding: 0em; font-size: 1.5em; }
     background-color: $light-blue;
 }
 .row-striped:nth-of-type(3n+1){
-    clear: both; margin-right: 1em;
+    clear: both; 
 }
-.row-striped:nth-of-type(3n+2){
-    margin-left: .5em; margin-right: .5em;
-}
-.row-striped:nth-of-type(3n){
-    margin-left: 1em;
-}
+
+
 .page-header {
   a.btn {
     float: right;

@@ -7,10 +7,16 @@
     <%= simple_format calling_script.summary %>
   </div>
   <%= simple_format calling_script.content %>
-  <% if calling_script.notes? %>
+  <% if calling_script.notes || calling_script.tag_list %>
     <div class='well notes'>
-      <h3>Notes:</h3>
-      <%= markdown.render(calling_script.notes).html_safe %>
+      <% if calling_script.notes %>
+	<h3>Notes:</h3>
+	<%= markdown(calling_script) %>
+      <% end %>
+      <% if calling_script.tag_list %>
+	<h3>Tags:</h3>
+	<%= tag_list(calling_script) %>
+      <% end %>
     </div>
   <% end %>
   <p class='text-muted user-info'>
@@ -28,23 +34,7 @@
       created <%= calling_script.created_at.strftime("%B %e, %Y") %>
     </small>
   </p>
-  <% if can? :edit, calling_script %>
-  <p>
-    <%= link_to edit_script_path(calling_script), class: 'btn btn-primary' do %>
-    <span class="fa fa-edit" aria-hidden='true'></span>
-    Edit
-  <% end %>
-</p>
-<% end %>
-
-<% if can? :archive, calling_script %>
-  <p>
-    <%= button_to archive_script_path(calling_script), class: 'btn btn-primary' do %>
-    <span class="fa fa-archive" aria-hidden='true'></span>
-    Archive
-<% end %>
-</p>
-<% end %>
+  <%= render 'calling_scripts/buttons/edit', calling_script: calling_script %>
 
   <div class='well'>
     Share this script:
