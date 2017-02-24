@@ -7,16 +7,11 @@
     <%= simple_format calling_script.summary %>
   </div>
   <%= simple_format calling_script.content %>
-  <% if calling_script.notes || calling_script.tag_list %>
+  <%= tag_list(calling_script) %>
+  <% if calling_script.notes %>
     <div class='well notes'>
-      <% if calling_script.notes %>
 	<h3>Notes:</h3>
 	<%= markdown(calling_script) %>
-      <% end %>
-      <% if calling_script.tag_list %>
-	<h3>Tags:</h3>
-	<%= tag_list(calling_script) %>
-      <% end %>
     </div>
   <% end %>
   <p class='text-muted user-info'>
