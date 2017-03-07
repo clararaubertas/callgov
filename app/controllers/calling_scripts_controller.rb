@@ -18,7 +18,7 @@ class CallingScriptsController < ApplicationController
         :calling_scripts,
         scripts,
         partial: "calling_scripts/scripts",
-        default_sort: {created_at: "desc"},
+        default_sort: {pinned: "desc", created_at: "desc"},
         remote: false
       )
     flash[:error] = "No scripts found." if @calling_scripts.empty?

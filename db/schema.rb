@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170210234829) do
+ActiveRecord::Schema.define(version: 20170307170926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 20170210234829) do
   create_table "calling_scripts", force: :cascade do |t|
     t.text     "content"
     t.string   "topic"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "user_id"
     t.text     "summary"
     t.integer  "calls_count", default: 0
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20170210234829) do
     t.string   "slug"
     t.boolean  "archived"
     t.datetime "most_recent"
+    t.boolean  "pinned",      default: false
   end
 
   add_index "calling_scripts", ["slug"], name: "index_calling_scripts_on_slug", unique: true, using: :btree
