@@ -138,9 +138,8 @@ label .display-name { padding: 0em; font-size: 1.5em; }
 .row-striped { padding: 2em; }
 .row-striped:nth-of-type(odd){
     background-color: darken($light-blue, 10%);
+    clear: both;
 }
-.row-striped:nth-of-type(odd):after{
-    clear: both; }
 .row-striped:nth-of-type(even){
     background-color: $light-blue;
 }
