@@ -13,10 +13,9 @@
 <% end %>
 
 <div id="script-list">
-  <% smart_listing.collection.each do |calling_script| %>
+  <% smart_listing.collection.each_with_index do |calling_script, index| %>
     <%= render 'script', :calling_script => calling_script, :uid => @uid %>
-  <% end %>
+<% end %>
 </div>
 
-<%= smart_listing.paginate %>
-
+<div class='spacer'>nbsp;</div>
