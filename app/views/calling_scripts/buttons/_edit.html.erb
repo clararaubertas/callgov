@@ -15,3 +15,13 @@
 <% end %>
 </p>
 <% end %>
+
+
+<% if can? :pin, calling_script %>
+  <p>
+    <%= button_to pin_script_path(calling_script), class: 'btn btn-primary' do %>
+    <span class="fa fa-icon-pushpin" aria-hidden='true'></span>
+    Pin
+<% end %>
+</p>
+<% end %>

@@ -83,6 +83,13 @@ class CallingScriptsController < ApplicationController
                 notice: 'Script was successfully archived.' 
   end
 
+  def pin
+    @calling_script.update_attribute(:pinned, true)
+    redirect_to scripts_path,
+                notice: 'Script was successfully pinned.' 
+  end
+
+  
   private
 
   def find_representative_from_id

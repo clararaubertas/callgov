@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :scripts, :controller => :calling_scripts do
     member do
       post 'archive'
+      post 'pin'
     end
   end
   root 'calling_scripts#index'
